@@ -1,0 +1,43 @@
+--- CMakeLists.txt.orig	2026-07-26 11:45:45 UTC
++++ CMakeLists.txt
+@@ -267,29 +267,29 @@ include_directories(
+ 		"${PROJECT_SOURCE_DIR}/idlib"
+ )
+ 
+-find_package(ZLIB REQUIRED CONFIG)
+-find_package(minizip REQUIRED CONFIG)
+-find_package(CURL REQUIRED CONFIG)
++find_package(ZLIB-ng REQUIRED CONFIG)
++find_package(minizip-ng REQUIRED CONFIG)
++#find_package(CURL REQUIRED CONFIG)
+ find_package(OpenAL REQUIRED CONFIG)
+-find_package(Ogg REQUIRED CONFIG)
+-find_package(Vorbis REQUIRED CONFIG)
+-find_package(JPEG REQUIRED CONFIG)
++#find_package(Ogg REQUIRED CONFIG)
++#find_package(Vorbis REQUIRED CONFIG)
++find_package(libjpeg-turbo REQUIRED CONFIG)
+ find_package(PNG REQUIRED CONFIG)
+-find_package(ffmpeg REQUIRED CONFIG)
++#find_package(ffmpeg REQUIRED CONFIG)
+ find_package(pugixml REQUIRED CONFIG)
+ find_package(MbedTLS REQUIRED CONFIG)
+ find_package(glfw3 REQUIRED CONFIG)
+ find_package(doctest REQUIRED CONFIG)
+-find_package(tracy REQUIRED CONFIG)
++#find_package(tracy REQUIRED CONFIG)
+ 
+ target_link_libraries(TheDarkMod
+-		ZLIB::ZLIB
+-		minizip::minizip
++		ZLIB-ng::ZLIB-ng
++		minizip-ng::minizip-ng
+ 		CURL::libcurl
+ 		OpenAL::OpenAL
+ 		vorbis::vorbis
+ 		Ogg::ogg
+-		JPEG::JPEG
++		libjpeg-turbo::libjpeg-turbo
+ 		PNG::PNG
+ 		ffmpeg::ffmpeg
+ 		glfw
