@@ -38,13 +38,20 @@ GH_TAGNAME=	1b6b495cc92232a1a49170da3f339b3693a024a6
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 #
-CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
+CMAKE_ARGS+=    -DCMAKE_BUILD_TYPE="Release" \
+				-DCMAKE_PREFIX_PATH=${PREFIX} \
 				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
 				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
 				-CURL_INCLUDE_DIRS=${LOCALBASE}/include \
+				-DCMAKE_ENABLE_TRACY=OFF \
+				-DENABLE_TRACY=OFF \
+				-DFORCE_COLORED_OUTPUT=ON \
+				-DASAN=ON \
+				-DCMAKE_TDM_THIRDPARTY_ARTEFACTS=OFF \
+				-DTDM_THIRDPARTY_ARTEFACTS=OFF \
 				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}"
-#-DCMAKE_FIND_DEBUG_MODE=true \
-CONFIGURE_ENV=	THREADS_PREFER_PTHREAD_FLAG=true
+#				-DCMAKE_FIND_DEBUG_MODE=true \
+#				--debug-output \
 
 ### Make block ##------------------------------------------------------------------------------------------
 #

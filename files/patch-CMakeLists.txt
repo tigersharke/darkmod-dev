@@ -1,5 +1,14 @@
 --- CMakeLists.txt.orig	2026-07-26 11:45:45 UTC
 +++ CMakeLists.txt
+@@ -12,7 +12,7 @@ if (UNIX)
+ 	string(APPEND CMAKE_C_FLAGS_RELEASE_INIT "-g -fno-math-errno -fno-trapping-math -ffinite-math-only")
+ 
+ 	option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored compiler warnings/errors (GCC/Clang only; esp. useful with ninja)." OFF)
+-	option(ASAN		"Enable GCC/Clang Adress Sanitizer (ASan)" OFF) # TODO: MSVC also supports this, somehow?
++	option(ASAN		"Enable GCC/Clang Address Sanitizer (ASan)" OFF) # TODO: MSVC also supports this, somehow?
+ elseif(MSVC)
+ 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
+ endif()
 @@ -267,29 +267,29 @@ include_directories(
  		"${PROJECT_SOURCE_DIR}/idlib"
  )
