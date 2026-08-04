@@ -1,0 +1,69 @@
+### PORTNAME block ##--------------------------------------------------------------------------------------
+PORTNAME=		darkmod
+DISTVERSION=	g20260726
+CATEGORIES=		games
+MASTER_SITES=	GH
+PKGNAMESUFFIX=	-dev
+DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
+
+# Maintainer block ##--------------------------------------------------------------------------------------
+MAINTAINER=	nope@nothere
+COMMENT=	Near-infinite-world block sandbox game
+WWW=		https://upstream.com
+
+### License block ##---------------------------------------------------------------------------------------
+LICENSE=		LGPL21+
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+# dependencies ##------------------------------------------------------------------------------------------
+BUILD_DEPENDS=	${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
+				tracy>0:devel/tracy 
+LIB_DEPENDS=	libzstd.so:archivers/zstd \
+				libminizip-ng.so:archivers/minizip-ng \
+				libz-ng.so:archivers/zlib-ng \
+				libcurl.so:ftp/curl \
+				libvorbisfile.so:audio/libvorbis \
+				libvorbis.so:audio/libvorbis \
+				libogg.so:audio/libogg \
+				libavcodec.so:multimedia/ffmpeg \
+				libmbedtls.so:security/mbedtls4 \
+				libglfw.so:graphics/glfw
+#
+### uses block ##------------------------------------------------------------------------------------------
+USES=		cmake ninja pkgconfig
+USE_GITHUB=	yes
+GH_ACCOUNT=	stgatilov
+GH_PROJECT=	darkmod_src
+GH_TAGNAME=	1b6b495cc92232a1a49170da3f339b3693a024a6
+
+# USES=cmake related variables ##--------------------------------------------------------------------------
+#
+CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
+				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
+				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
+				-CURL_INCLUDE_DIRS=${LOCALBASE}/include \
+				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}"
+#-DCMAKE_FIND_DEBUG_MODE=true \
+CONFIGURE_ENV=	THREADS_PREFER_PTHREAD_FLAG=true
+
+### Make block ##------------------------------------------------------------------------------------------
+#
+### conflicts ##-------------------------------------------------------------------------------------------
+#
+### wrksrc block ##----------------------------------------------------------------------------------------
+#
+### packaging list block ##--------------------------------------------------------------------------------
+#
+### options definitions ##---------------------------------------------------------------------------------
+#
+### options descriptions ##--------------------------------------------------------------------------------
+#
+### options helpers ##-------------------------------------------------------------------------------------
+#
+
+.include <bsd.port.options.mk>
+
+#
+#----------------------------------------------------------------------
+
+.include <bsd.port.mk>
