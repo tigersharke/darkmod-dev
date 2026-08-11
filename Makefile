@@ -17,6 +17,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
 BUILD_DEPENDS=	conan:sysutils/conan \
+				nasm:devel/nasm \
 				${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
 				tracy>0:devel/tracy 
 # devel/py-yaml is a dependency of sysutils/conan
@@ -27,6 +28,7 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libvorbisfile.so:audio/libvorbis \
 				libvorbis.so:audio/libvorbis \
 				libogg.so:audio/libogg \
+				libopenal.so:audio/openal-soft \
 				libavcodec.so:multimedia/ffmpeg \
 				libmbedtls.so:security/mbedtls4 \
 				libglfw.so:graphics/glfw
