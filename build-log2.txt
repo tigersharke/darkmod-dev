@@ -1,0 +1,72 @@
+===>  License LGPL21+ accepted by the user
+===>   darkmod-dev-g20260726 depends on file: /usr/local/sbin/pkg - found
+===> Fetching all distfiles required by darkmod-dev-g20260726 for building
+===>  Extracting for darkmod-dev-g20260726
+=> SHA256 Checksum OK for darkmod-dev/stgatilov-darkmod_src-g20260726-1b6b495cc92232a1a49170da3f339b3693a024a6_GH0.tar.gz.
+===>  Patching for darkmod-dev-g20260726
+===>  Applying FreeBSD patches for darkmod-dev-g20260726 from /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files
+===>   darkmod-dev-g20260726 depends on file: /usr/local/include/doctest/doctest.h - found
+===>   darkmod-dev-g20260726 depends on package: tracy>0 - found
+===>   darkmod-dev-g20260726 depends on file: /usr/local/bin/cmake - found
+===>   darkmod-dev-g20260726 depends on executable: ninja - found
+===>   darkmod-dev-g20260726 depends on package: pkgconf>=1.3.0_1 - found
+===>   darkmod-dev-g20260726 depends on file: /usr/local/bin/ccache - found
+===>   darkmod-dev-g20260726 depends on shared library: libzstd.so - found (/usr/local/lib/libzstd.so)
+===>   darkmod-dev-g20260726 depends on shared library: libminizip-ng.so - found (/usr/local/lib/libminizip-ng.so)
+===>   darkmod-dev-g20260726 depends on shared library: libz-ng.so - found (/usr/local/lib/libz-ng.so)
+===>   darkmod-dev-g20260726 depends on shared library: libcurl.so - found (/usr/local/lib/libcurl.so)
+===>   darkmod-dev-g20260726 depends on shared library: libvorbisfile.so - found (/usr/local/lib/libvorbisfile.so)
+===>   darkmod-dev-g20260726 depends on shared library: libvorbis.so - found (/usr/local/lib/libvorbis.so)
+===>   darkmod-dev-g20260726 depends on shared library: libogg.so - found (/usr/local/lib/libogg.so)
+===>   darkmod-dev-g20260726 depends on shared library: libavcodec.so - found (/usr/local/lib/libavcodec.so)
+===>   darkmod-dev-g20260726 depends on shared library: libmbedtls.so - found (/usr/local/lib/libmbedtls.so)
+===>   darkmod-dev-g20260726 depends on shared library: libglfw.so - found (/usr/local/lib/libglfw.so)
+===>  Configuring for darkmod-dev-g20260726
+===>  Performing out-of-source build
+/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build
+loading initial cache file URL_INCLUDE_DIRS=/usr/local/include
+CMake Error: Not a file: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/URL_INCLUDE_DIRS=/usr/local/include
+CMake Error: Error processing file: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/URL_INCLUDE_DIRS=/usr/local/include
+CMake Deprecation Warning at sys/cmake/ucm.cmake:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  CMakeLists.txt:26 (include)
+
+
+-- The C compiler identification is Clang 21.1.8
+-- The CXX compiler identification is Clang 21.1.8
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/local/libexec/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/libexec/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test cxx_has_Wdangling_reference
+-- Performing Test cxx_has_Wdangling_reference - Failed
+-- Performing Test MSSE2_SUPPORTED
+-- Performing Test MSSE2_SUPPORTED - Success
+-- Performing Test cxx_has_fp-contract
+-- Performing Test cxx_has_fp-contract - Success
+Determining SVN revision
+-- Found ZLIB: /usr/lib/libz.so (found version "1.3.2")
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE
+-- Configuring incomplete, errors occurred!
+*** Error code 1
+
+Stop.
+make: stopped making "build" in /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev
