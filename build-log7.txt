@@ -1,0 +1,52 @@
+===>  License LGPL21+ accepted by the user
+===>   darkmod-dev-g20260802 depends on file: /usr/local/sbin/pkg - found
+===> Fetching all distfiles required by darkmod-dev-g20260802 for building
+===>  Extracting for darkmod-dev-g20260802
+=> SHA256 Checksum OK for darkmod-dev/stgatilov-darkmod_src-g20260802-6eba8ced56fb3630e0bb6adbbf95727f64f2364d_GH0.tar.gz.
+===>  Patching for darkmod-dev-g20260802
+===>   darkmod-dev-g20260802 depends on executable: conan - found
+===>   darkmod-dev-g20260802 depends on file: /usr/local/include/doctest/doctest.h - found
+===>   darkmod-dev-g20260802 depends on package: tracy>0 - found
+===>   darkmod-dev-g20260802 depends on file: /usr/local/bin/cmake - found
+===>   darkmod-dev-g20260802 depends on executable: ninja - found
+===>   darkmod-dev-g20260802 depends on package: pkgconf>=1.3.0_1 - found
+===>   darkmod-dev-g20260802 depends on file: /usr/local/bin/python3.12 - found
+===>   darkmod-dev-g20260802 depends on file: /usr/local/bin/ccache - found
+===>   darkmod-dev-g20260802 depends on shared library: libzstd.so - found (/usr/local/lib/libzstd.so)
+===>   darkmod-dev-g20260802 depends on shared library: libminizip-ng.so - found (/usr/local/lib/libminizip-ng.so)
+===>   darkmod-dev-g20260802 depends on shared library: libz-ng.so - found (/usr/local/lib/libz-ng.so)
+===>   darkmod-dev-g20260802 depends on shared library: libcurl.so - found (/usr/local/lib/libcurl.so)
+===>   darkmod-dev-g20260802 depends on shared library: libvorbisfile.so - found (/usr/local/lib/libvorbisfile.so)
+===>   darkmod-dev-g20260802 depends on shared library: libvorbis.so - found (/usr/local/lib/libvorbis.so)
+===>   darkmod-dev-g20260802 depends on shared library: libogg.so - found (/usr/local/lib/libogg.so)
+===>   darkmod-dev-g20260802 depends on shared library: libavcodec.so - found (/usr/local/lib/libavcodec.so)
+===>   darkmod-dev-g20260802 depends on shared library: libmbedtls.so - found (/usr/local/lib/libmbedtls.so)
+===>   darkmod-dev-g20260802 depends on shared library: libglfw.so - found (/usr/local/lib/libglfw.so)
+===>  Configuring for darkmod-dev-g20260802
+===>  Building third-party dependencies with Conan
+/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2
+cd /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-6eba8ced56fb3630e0bb6adbbf95727f64f2364d/ThirdParty &&  /usr/bin/env CONAN_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2 NINJA_STATUS="[%p %s/%t] " XDG_DATA_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CONFIG_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CACHE_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.cache  HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work PATH=/usr/local/libexec/ccache:/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin PKG_CONFIG_LIBDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES DESTDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/stage PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444" /usr/local/bin/python3.12 1_export_custom.py --unattended
+Commands to execute:
+  conan export custom/openal/conanfile.py --version=1.24.1 --user=thedarkmod
+  conan export custom/ffmpeg/conanfile.py --version=7.1.3 --user=thedarkmod
+  conan export custom/tracy/conanfile.py --version=0.13.1 --user=thedarkmod
+  conan export custom/blake2/conanfile.py --version=20190724 --user=thedarkmod
+  conan export custom/glfw/conanfile.py --version=3.4
+  conan export custom/fltk/conanfile.py --version=1.3.11 --user=thedarkmod
+  conan export custom/tinyformat/conanfile.py --version=2.3.0 --user=thedarkmod
+  conan export custom/libjpeg/conanfile.py --version=9f --user=thedarkmod
+/usr/bin/env CONAN_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2 NINJA_STATUS="[%p %s/%t] " XDG_DATA_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CONFIG_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CACHE_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.cache  HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work PATH=/usr/local/libexec/ccache:/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin PKG_CONFIG_LIBDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES DESTDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/stage PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444" conan profile detect --force
+[settings]
+arch=x86_64
+build_type=Release
+os=FreeBSD
+
+echo 'compiler=clang' >> /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/profiles/default
+echo 'compiler.version=18' >> /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/profiles/default   # adjust to your clang major
+echo 'compiler.libcxx=libc++' >> /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/profiles/default
+echo 'compiler.cppstd=gnu17' >> /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/profiles/default
+cd /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-6eba8ced56fb3630e0bb6adbbf95727f64f2364d/ThirdParty &&  /usr/bin/env CONAN_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2 NINJA_STATUS="[%p %s/%t] " XDG_DATA_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CONFIG_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CACHE_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.cache  HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work PATH=/usr/local/libexec/ccache:/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin PKG_CONFIG_LIBDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES DESTDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/stage PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444" conan install .  -of /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-6eba8ced56fb3630e0bb6adbbf95727f64f2364d/ThirdParty/artefacts/freebsd_x86_64  -s thedarkmod/*:build_type=Release  -b missing
+*** Error code 1
+
+Stop.
+make: stopped making "build" in /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev

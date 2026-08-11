@@ -88,6 +88,10 @@ pre-configure:	# or post-patch
 		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py --unattended
 	# Create the default profile (required by Conan 2)
 	${SETENV} ${MAKE_ENV} conan profile detect --force
+	${ECHO} 'compiler=clang' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'compiler.version=18' >> ${CONAN_HOME}/profiles/default   # adjust to your clang major
+	${ECHO} 'compiler.libcxx=libc++' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'compiler.cppstd=gnu17' >> ${CONAN_HOME}/profiles/default
 	# 2. Install / build the packages for FreeBSD
 	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
 	cd ${WRKSRC}/ThirdParty && \
