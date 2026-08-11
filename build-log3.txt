@@ -4,6 +4,7 @@
 ===>  Extracting for darkmod-dev-g20260802
 => SHA256 Checksum OK for darkmod-dev/stgatilov-darkmod_src-g20260802-6eba8ced56fb3630e0bb6adbbf95727f64f2364d_GH0.tar.gz.
 ===>  Patching for darkmod-dev-g20260802
+===>   darkmod-dev-g20260802 depends on executable: conan - found
 ===>   darkmod-dev-g20260802 depends on file: /usr/local/include/doctest/doctest.h - found
 ===>   darkmod-dev-g20260802 depends on package: tracy>0 - found
 ===>   darkmod-dev-g20260802 depends on file: /usr/local/bin/cmake - found
@@ -21,28 +22,10 @@
 ===>   darkmod-dev-g20260802 depends on shared library: libmbedtls.so - found (/usr/local/lib/libmbedtls.so)
 ===>   darkmod-dev-g20260802 depends on shared library: libglfw.so - found (/usr/local/lib/libglfw.so)
 ===>  Configuring for darkmod-dev-g20260802
-===>  Performing out-of-source build
-/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build
--- The C compiler identification is Clang 21.1.8
--- The CXX compiler identification is Clang 21.1.8
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /usr/local/libexec/ccache/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /usr/local/libexec/ccache/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Performing Test cxx_has_Wdangling_reference
--- Performing Test cxx_has_Wdangling_reference - Failed
--- Performing Test MSSE2_SUPPORTED
--- Performing Test MSSE2_SUPPORTED - Success
--- Performing Test cxx_has_fp-contract
--- Performing Test cxx_has_fp-contract - Success
--- Configuring incomplete, errors occurred!
-*** Error code 1
+===>  Building third-party dependencies with Conan
+/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2
+cd /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-6eba8ced56fb3630e0bb6adbbf95727f64f2364d/ThirdParty &&  /usr/bin/env CONAN_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2 NINJA_STATUS="[%p %s/%t] " XDG_DATA_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CONFIG_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work  XDG_CACHE_HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.cache  HOME=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work PATH=/usr/local/libexec/ccache:/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin PKG_CONFIG_LIBDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.pkgconfig:/usr/local/libdata/pkgconfig:/usr/local/share/pkgconfig:/usr/libdata/pkgconfig MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES DESTDIR=/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/stage PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing " CCACHE_DIR="/root/.ccache" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444"  1_export_custom.py
+*** Error code 127
 
 Stop.
 make: stopped making "build" in /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev

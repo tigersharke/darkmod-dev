@@ -1,6 +1,6 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=		darkmod
-DISTVERSION=	g20260726
+DISTVERSION=	g20260802
 CATEGORIES=		games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
@@ -16,7 +16,8 @@ LICENSE=		LGPL21+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
-BUILD_DEPENDS=	${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}conan:sysutils/conan@${PY_FLAVOR} \
+				${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
 				tracy>0:devel/tracy 
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libminizip-ng.so:archivers/minizip-ng \
@@ -34,23 +35,27 @@ USES=		cmake ninja pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	stgatilov
 GH_PROJECT=	darkmod_src
-GH_TAGNAME=	1b6b495cc92232a1a49170da3f339b3693a024a6
+GH_TAGNAME=	6eba8ced56fb3630e0bb6adbbf95727f64f2364d
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 #
-CMAKE_ARGS+=    -DCMAKE_BUILD_TYPE="Release" \
-				-DCMAKE_PREFIX_PATH=${PREFIX} \
+# Directory where Conan will drop the generated CMake configs + libs
+CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH}
+CONAN_HOME=	${WRKDIR}/.conan2
+MAKE_ENV+=	CONAN_HOME=${CONAN_HOME}
+#
+CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
 				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
 				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
-				-CURL_INCLUDE_DIRS=${LOCALBASE}/include \
 				-DCMAKE_ENABLE_TRACY=OFF \
 				-DENABLE_TRACY=OFF \
 				-DFORCE_COLORED_OUTPUT=ON \
 				-DASAN=ON \
-				-DCMAKE_TDM_THIRDPARTY_ARTEFACTS=OFF \
 				-DTDM_THIRDPARTY_ARTEFACTS=OFF \
-				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}"
-#				-DCMAKE_FIND_DEBUG_MODE=true \
+				-DCMAKE_FIND_DEBUG_MODE=true \
+				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
+				-DCURL_INCLUDE_DIRS=${LOCALBASE}/include
+#				-DCMAKE_BUILD_TYPE="Release" \
 #				--debug-output \
 
 ### Make block ##------------------------------------------------------------------------------------------
@@ -72,5 +77,20 @@ CMAKE_ARGS+=    -DCMAKE_BUILD_TYPE="Release" \
 
 #
 #----------------------------------------------------------------------
+pre-configure:	# or post-patch
+	@${ECHO_MSG} "===>  Building third-party dependencies with Conan"
+	${MKDIR} ${CONAN_HOME}
+	# 1. Export the custom recipes that live under ThirdParty/custom/
+	cd ${WRKSRC}/ThirdParty && \
+		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py
+	# 2. Install / build the packages for FreeBSD
+	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
+	cd ${WRKSRC}/ThirdParty && \
+		${SETENV} ${MAKE_ENV} conan install . \
+			-of ${CONAN_OF} \
+			-s thedarkmod/*:build_type=Release \
+			-b missing \
+			--build=missing
+
 
 .include <bsd.port.mk>
