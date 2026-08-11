@@ -32,7 +32,7 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libglfw.so:graphics/glfw
 #
 ### uses block ##------------------------------------------------------------------------------------------
-USES=		cmake ninja pkgconfig shebangfix python
+USES=		cmake ninja pkgconfig python shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	stgatilov
 GH_PROJECT=	darkmod_src
@@ -46,10 +46,7 @@ CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH:S/amd64/x86_64/}
 CONAN_HOME=	${WRKDIR}/.conan2
 MAKE_ENV+=	CONAN_HOME=${CONAN_HOME}
 #
-CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
-				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
-				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
-				-DCMAKE_ENABLE_TRACY=OFF \
+CMAKE_ARGS+=    -DCMAKE_ENABLE_TRACY=OFF \
 				-DENABLE_TRACY=OFF \
 				-DFORCE_COLORED_OUTPUT=ON \
 				-DASAN=ON \
@@ -61,6 +58,9 @@ CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
 				-DCMAKE_BUILD_TYPE="Release" \
 				-DCMAKE_PREFIX_PATH=${CONAN_OF}
 
+#-DCMAKE_PREFIX_PATH=${PREFIX} \
+#				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
+#				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
 ### Make block ##------------------------------------------------------------------------------------------
 #
 ### conflicts ##-------------------------------------------------------------------------------------------
@@ -86,6 +86,8 @@ pre-configure:	# or post-patch
 	# 1. Export the custom recipes that live under ThirdParty/custom/
 	cd ${WRKSRC}/ThirdParty && \
 		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py --unattended
+	# Create the default profile (required by Conan 2)
+	${SETENV} ${MAKE_ENV} conan profile detect --force
 	# 2. Install / build the packages for FreeBSD
 	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
 	cd ${WRKSRC}/ThirdParty && \
