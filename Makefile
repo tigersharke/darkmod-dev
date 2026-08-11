@@ -16,7 +16,7 @@ LICENSE=		LGPL21+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}conan:sysutils/conan@${PY_FLAVOR} \
+BUILD_DEPENDS=	conan:sysutils/conan \
 				${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
 				tracy>0:devel/tracy 
 # devel/py-yaml is a dependency of sysutils/conan
@@ -32,7 +32,7 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libglfw.so:graphics/glfw
 #
 ### uses block ##------------------------------------------------------------------------------------------
-USES=		cmake ninja pkgconfig shebangfix
+USES=		cmake ninja pkgconfig shebangfix python
 USE_GITHUB=	yes
 GH_ACCOUNT=	stgatilov
 GH_PROJECT=	darkmod_src
@@ -53,12 +53,13 @@ CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
 				-DENABLE_TRACY=OFF \
 				-DFORCE_COLORED_OUTPUT=ON \
 				-DASAN=ON \
-				-DTDM_THIRDPARTY_ARTEFACTS=OFF \
+				-DTDM_THIRDPARTY_ARTEFACTS=ON \
 				-DCMAKE_FIND_DEBUG_MODE=true \
 				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
 				--debug-output \
-				-DCURL_INCLUDE_DIRS=${LOCALBASE}/include
-#				-DCMAKE_BUILD_TYPE="Release" \
+				-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
+				-DCMAKE_BUILD_TYPE="Release" \
+				-DCMAKE_PREFIX_PATH=${CONAN_OF}
 
 ### Make block ##------------------------------------------------------------------------------------------
 #
@@ -91,8 +92,7 @@ pre-configure:	# or post-patch
 		${SETENV} ${MAKE_ENV} conan install . \
 			-of ${CONAN_OF} \
 			-s thedarkmod/*:build_type=Release \
-			-b missing \
-			--build=missing
+			-b missing 
 
 
 .include <bsd.port.mk>
