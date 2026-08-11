@@ -19,6 +19,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}conan:sysutils/conan@${PY_FLAVOR} \
 				${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
 				tracy>0:devel/tracy 
+# devel/py-yaml is a dependency of sysutils/conan
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libminizip-ng.so:archivers/minizip-ng \
 				libz-ng.so:archivers/zlib-ng \
@@ -31,7 +32,7 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 				libglfw.so:graphics/glfw
 #
 ### uses block ##------------------------------------------------------------------------------------------
-USES=		cmake ninja pkgconfig
+USES=		cmake ninja pkgconfig shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	stgatilov
 GH_PROJECT=	darkmod_src
@@ -40,7 +41,8 @@ GH_TAGNAME=	6eba8ced56fb3630e0bb6adbbf95727f64f2364d
 # USES=cmake related variables ##--------------------------------------------------------------------------
 #
 # Directory where Conan will drop the generated CMake configs + libs
-CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH}
+#CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH}
+CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH:S/amd64/x86_64/}
 CONAN_HOME=	${WRKDIR}/.conan2
 MAKE_ENV+=	CONAN_HOME=${CONAN_HOME}
 #
@@ -54,9 +56,9 @@ CMAKE_ARGS+=    -DCMAKE_PREFIX_PATH=${PREFIX} \
 				-DTDM_THIRDPARTY_ARTEFACTS=OFF \
 				-DCMAKE_FIND_DEBUG_MODE=true \
 				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
+				--debug-output \
 				-DCURL_INCLUDE_DIRS=${LOCALBASE}/include
 #				-DCMAKE_BUILD_TYPE="Release" \
-#				--debug-output \
 
 ### Make block ##------------------------------------------------------------------------------------------
 #
@@ -82,7 +84,7 @@ pre-configure:	# or post-patch
 	${MKDIR} ${CONAN_HOME}
 	# 1. Export the custom recipes that live under ThirdParty/custom/
 	cd ${WRKSRC}/ThirdParty && \
-		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py
+		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py --unattended
 	# 2. Install / build the packages for FreeBSD
 	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
 	cd ${WRKSRC}/ThirdParty && \
