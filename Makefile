@@ -94,13 +94,17 @@ pre-configure:	# or post-patch
 	${ECHO} 'compiler.version=18' >> ${CONAN_HOME}/profiles/default   # adjust to your clang major
 	${ECHO} 'compiler.libcxx=libc++' >> ${CONAN_HOME}/profiles/default
 	${ECHO} 'compiler.cppstd=gnu17' >> ${CONAN_HOME}/profiles/default
-	# 2. Install / build the packages for FreeBSD
+	${ECHO} '[platform_tool_requires]' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'nasm/2.16.01' >> ${CONAN_HOME}/profiles/default
+# 2. Install / build the packages for FreeBSD
 	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
 	cd ${WRKSRC}/ThirdParty && \
 		${SETENV} ${MAKE_ENV} conan install . \
 			-of ${CONAN_OF} \
 			-s thedarkmod/*:build_type=Release \
-			-b missing 
-
+			-vv \
+			-c tools.cmake.cmaketoolchain:generator=Ninja \
+			-b=~nasm -b=~m4 -b=~autoconf -b=~automake -b=~mbedtls \
+			-b=missing
 
 .include <bsd.port.mk>
