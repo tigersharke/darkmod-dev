@@ -96,15 +96,23 @@ pre-configure:	# or post-patch
 	${ECHO} 'compiler.cppstd=gnu17' >> ${CONAN_HOME}/profiles/default
 	${ECHO} '[platform_tool_requires]' >> ${CONAN_HOME}/profiles/default
 	${ECHO} 'nasm/2.16.01' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'mbedtls/3.6.6' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'ninja/1.13.2,4' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'autoconf/2.73' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'm4/1.4.21' >> ${CONAN_HOME}/profiles/default
+	${ECHO} '' >> ${CONAN_HOME}/profiles/default
+	${ECHO} '[replace_requires]' >> ${CONAN_HOME}/profiles/default
+	${ECHO} 'zlib/*: zlib-ng/2.3.3' >> ${CONAN_HOME}/profiles/default
+#	${ECHO} 'minizip/*: minizip-ng/4.2.2' >> ${CONAN_HOME}/profiles/default
 # 2. Install / build the packages for FreeBSD
 	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
 	cd ${WRKSRC}/ThirdParty && \
 		${SETENV} ${MAKE_ENV} conan install . \
 			-of ${CONAN_OF} \
 			-s thedarkmod/*:build_type=Release \
-			-vv \
+			-vvv \
 			-c tools.cmake.cmaketoolchain:generator=Ninja \
-			-b=~nasm -b=~m4 -b=~autoconf -b=~automake -b=~mbedtls \
+			-b=~nasm -b=~m4 -b=~autoconf -b=~automake -b=~mbedtls -b~ninja -b=~autoconf\
 			-b=missing
 
 .include <bsd.port.mk>
