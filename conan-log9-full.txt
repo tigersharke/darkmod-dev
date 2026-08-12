@@ -1,0 +1,286 @@
+
+======== Input profiles ========
+Profile host:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=clang
+compiler.cppstd=gnu17
+compiler.libcxx=libc++
+compiler.version=18
+os=FreeBSD
+thedarkmod/*:build_type=Release
+[platform_tool_requires]
+nasm/2.16.01
+[conf]
+tools.cmake.cmaketoolchain:generator=Ninja
+
+Profile build:
+[settings]
+arch=x86_64
+build_type=Release
+compiler=clang
+compiler.cppstd=gnu17
+compiler.libcxx=libc++
+compiler.version=18
+os=FreeBSD
+[platform_tool_requires]
+nasm/2.16.01
+
+
+======== Computing dependency graph ========
+OPT bzip2 = False on minizip
+OPT with_ssl = mbedtls on libcurl
+OPT SSE = SSE2 on blake2
+OPT with_x11 = True on glfw
+OPT with_wayland = True on glfw
+Graph root
+    conanfile.py (thedarkmod/None): /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-6eba8ced56fb3630e0bb6adbbf95727f64f2364d/ThirdParty/conanfile.py
+Requirements
+    blake2/20190724@thedarkmod#51187723b42214785d62f0090118873b - Cache
+    doctest/2.4.11#a4211dfc329a16ba9f280f9574025659 - Cache
+    ffmpeg/7.1.3@thedarkmod#96a7c3dd88c4e8aebd7bc8345e356960 - Cache
+    fltk/1.3.11@thedarkmod#d1f9d361637599a6199fb4cbfd88fd14 - Cache
+    glfw/3.4#d22735696db44cbdfecd7daf66f32931 - Cache
+    glu/system#5f205c4daa8fe4f820869771146885de - Cache
+    libcurl/8.19.0#2b593de2a7f92cb5cc089ac471e5e8b4 - Cache
+    libjpeg/9f@thedarkmod#e5a0879280e65cb68be5b4c088492ba5 - Cache
+    libpng/1.6.57#50b9fd2ad4a46f22921d9a615fb2fd46 - Cache
+    mbedtls/3.6.6#b122cf60f4d15638835cc8ac992b17db - Cache
+    minizip/1.3.1#0fe428c3789670e2a03b3ad2a941d4b7 - Cache
+    ogg/1.3.5#e8186fe05ebe9f8e706fa4bde2164d12 - Cache
+    openal/1.24.1@thedarkmod#167f4b4068b143a42894d24d2e3b3f5c - Cache
+    opengl/system#cfcf523b9d2bad75cbf377f56562634c - Cache
+    pugixml/1.15#3c90254c9582f5f49d84bbf7f3e55e71 - Cache
+    tinyformat/2.3.0@thedarkmod#ce69108b443bc1e28580e854371cccba - Cache
+    tracy/0.13.1@thedarkmod#71aeed268e824a5bffea8ff98eb8ce18 - Cache
+    vorbis/1.3.7#a019e93187ade6ee8a51762f88092604 - Cache
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20 - Cache
+Build requirements
+    autoconf/2.71#51077f068e61700d65bb05541ea1e4b0 - Cache
+    automake/1.16.5#b91b7c384c3deaa9d535be02da14d04f - Cache
+    gnu-config/cci.20210814#466e9d4d7779e1c142443f7ea44b4284 - Cache
+    libtool/2.4.7#14e7739cc128bc1623d2ed318008e47e - Cache
+    m4/1.4.19#1727f439cf74e83826ec96d0b4904eee - Cache
+    meson/1.10.2#9d2d10681fe7fe61c788c58626c89b25 - Cache
+    nasm/2.16.01#platform - Platform
+    ninja/1.13.2#c8c5dc2a52ed6e4e42a66d75b4717ceb - Cache
+    pkgconf/2.5.1#93c2051284cba1279494a43a4fcfeae2 - Cache
+Resolved version ranges
+    meson/[>=1.2.2 <2]: meson/1.10.2
+    ninja/[>=1.10.2 <2]: ninja/1.13.2
+    pkgconf/[>=2.1 <3]: pkgconf/2.5.1
+    pkgconf/[>=2.2 <3]: pkgconf/2.5.1
+Overrides
+    ogg/1.3.5#e8186fe05ebe9f8e706fa4bde2164d12: [None, 'ogg/1.3.5']
+    zlib/[>=1.2.11 <2]: ['zlib/1.3.1']
+    mbedtls/3.5.0: ['mbedtls/3.6.6']
+    libjpeg/9e: ['libjpeg/9f@thedarkmod']
+    libpng/[>=1.6 <2]: ['libpng/1.6.57']
+
+======== Computing necessary packages ========
+Connecting to remote 'conancenter' anonymously
+fltk/1.3.11@thedarkmod: Compatible package ID 89c1614a109cf022f9cb29fc4184f6216485e839 equal to the default package ID: Skipping it.
+fltk/1.3.11@thedarkmod: Main binary package '89c1614a109cf022f9cb29fc4184f6216485e839' missing
+fltk/1.3.11@thedarkmod: Checking 13 compatible configurations
+fltk/1.3.11@thedarkmod: Compatible configurations not found in cache, checking servers
+fltk/1.3.11@thedarkmod: 'fc37b0ee8268646087db7f647a0c52cc22756791': compiler.cppstd=98
+fltk/1.3.11@thedarkmod: '7f3a60f2cfbbfef95d97f43bdf541d1df8bc16c5': compiler.cppstd=gnu98
+fltk/1.3.11@thedarkmod: '35b7ba6efa87ee15a9b924b2b3025c5a2631c1c7': compiler.cppstd=11
+fltk/1.3.11@thedarkmod: '68658eaad1735e9f405c62c7e70f0cefe1fb8164': compiler.cppstd=gnu11
+fltk/1.3.11@thedarkmod: '6b320db847e043effc2db7ef5d78923f3fe1b49a': compiler.cppstd=14
+fltk/1.3.11@thedarkmod: '21ebf92f3070b49057667342a96c4251bcdc009c': compiler.cppstd=gnu14
+fltk/1.3.11@thedarkmod: '163f4de65e2a8c517590f6f9e82a2b60d6255095': compiler.cppstd=17
+fltk/1.3.11@thedarkmod: 'c8c1fbc5cada7b643febe98d576d66362d2084f0': compiler.cppstd=20
+fltk/1.3.11@thedarkmod: '3f4713b3f8b818dacb411f46b4e8982ba76c7287': compiler.cppstd=gnu20
+fltk/1.3.11@thedarkmod: 'df6482d85e16abd82cfc4d078bd6765683a6bc24': compiler.cppstd=23
+fltk/1.3.11@thedarkmod: '0faf9e9b1fd4a5ad1c3ef3d4cbe84da9e07abf58': compiler.cppstd=gnu23
+fltk/1.3.11@thedarkmod: 'c7f4a78424a4af5b79576dba2c6337476fe8ecc4': compiler.cppstd=26
+fltk/1.3.11@thedarkmod: '56c254577f131e8123e99a41f7708ecb29810b68': compiler.cppstd=gnu26
+fltk/1.3.11@thedarkmod: No compatible configuration found
+
+A new experimental approach for binary compatibility detection is available.
+    Enable it by setting the core.graph:compatibility_mode=optimized conf
+    and get improved performance when querying multiple compatible binaries in remotes.
+
+Requirements
+    blake2/20190724@thedarkmod#51187723b42214785d62f0090118873b:dbc8cffb50aa3423cde587c5f284e5214a3b5efa#761690e170f7611aee4980b975828f6b - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.cppstd=gnu17 compiler.libcxx=libc++ compiler.version=18 build_type=Release
+        options: SSE=SSE2 shared=False
+    doctest/2.4.11#a4211dfc329a16ba9f280f9574025659:da39a3ee5e6b4b0d3255bfef95601890afd80709#c64e99fa3cf2e427c3b1dfd6c0ff0f68 - Cache
+    ffmpeg/7.1.3@thedarkmod#96a7c3dd88c4e8aebd7bc8345e356960:1bb958c0bbe6b7d61308d1275cf930ca0a8684a6 - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: avcodec=True avdevice=False avfilter=False avformat=True disable_all_bitstream_filters=False disable_all_decoders=False disable_all_demuxers=False disable_all_devices=False disable_all_encoders=False disable_all_filters=False disable_all_hardware_accelerators=False disable_all_input_devices=False disable_all_muxers=False disable_all_output_devices=False disable_all_parsers=False disable_all_protocols=False disable_bitstream_filters=False disable_decoders=False disable_demuxers=False disable_encoders=False disable_everything=False disable_filters=False disable_hardware_accelerators=False disable_input_devices=False disable_muxers=False disable_output_devices=False disable_parsers=False disable_protocols=False enable_bitstream_filters=False enable_decoders=False enable_demuxers=False enable_encoders=False enable_filters=False enable_hardware_accelerators=False enable_input_devices=False enable_muxers=False enable_output_devices=False enable_parsers=False enable_protocols=False fPIC=False network=False postproc=False shared=False swresample=True swscale=True with_asm=False with_bzip2=False with_fontconfig=False with_freetype=False with_fribidi=False with_harfbuzz=False with_libalsa=False with_libaom=False with_libdav1d=False with_libdrm=False with_libfdk_aac=False with_libiconv=False with_libjxl=False with_libmp3lame=False with_libsvtav1=False with_libvpx=False with_libwebp=False with_libx264=False with_libx265=False with_libxml2=False with_lzma=False with_openh264=False with_openjpeg=False with_opus=False with_programs=False with_pulse=False with_sdl=False with_soxr=False with_ssl=False with_vaapi=False with_vdpau=False with_vorbis=False with_vulkan=False with_xcb=False with_xlib=False with_zeromq=False with_zlib=False
+    fltk/1.3.11@thedarkmod#d1f9d361637599a6199fb4cbfd88fd14:89c1614a109cf022f9cb29fc4184f6216485e839 - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.cppstd=gnu17 compiler.libcxx=libc++ compiler.version=18 build_type=Release
+        options: abi_version=10311 fPIC=True shared=False with_gl=True with_threads=True with_xft=False
+        requires: libjpeg/9f@thedarkmod libpng/1.6.Z zlib/1.3.Z glu/system opengl/system
+    glfw/3.4#d22735696db44cbdfecd7daf66f32931:b24c784e95b5d025356dee65f63f6dd603f3647a#e1633628a28d9689097ada0f9bba7d50 - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False with_x11=True
+        requires: opengl/system
+    glu/system#5f205c4daa8fe4f820869771146885de:da39a3ee5e6b4b0d3255bfef95601890afd80709#0ba8627bd47edc3a501e8f0eb9a79e5e - Cache
+    libcurl/8.19.0#2b593de2a7f92cb5cc089ac471e5e8b4:f84b3db93dcd3e8fe043de5a57d0d38bf9ffe52b - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: build_executable=False fPIC=True shared=False with_brotli=False with_c_ares=False with_ca_bundle=auto with_ca_fallback=False with_ca_path=auto with_cookies=True with_crypto_auth=True with_dict=True with_docs=False with_file=True with_form_api=True with_ftp=True with_gopher=True with_http=True with_imap=True with_ipv6=True with_largemaxwritesize=False with_ldap=False with_libgsasl=False with_libidn=False with_libpsl=False with_librtmp=False with_libssh2=False with_misc_docs=False with_mqtt=True with_nghttp2=False with_ntlm=True with_ntlm_wb=True with_pop3=True with_proxy=True with_rtsp=True with_smb=True with_smtp=True with_ssl=mbedtls with_symbol_hiding=False with_telnet=True with_tftp=True with_threaded_resolver=True with_unix_sockets=True with_verbose_debug=True with_verbose_strings=True with_websockets=True with_zlib=True with_zstd=False
+        requires: mbedtls/3.6.Z zlib/1.3.Z
+    libjpeg/9f@thedarkmod#e5a0879280e65cb68be5b4c088492ba5:4f2f0b32892774c57b925707b1efe867af6007fd#e8e5f57dc17d930042be2dbd67bf5b84 - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+    libpng/1.6.57#50b9fd2ad4a46f22921d9a615fb2fd46:5dd9a38ceb57f0aa5d0680ffd8897b487b01c378 - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: api_prefix= fPIC=True shared=False sse=True
+        requires: zlib/1.3.Z
+    mbedtls/3.6.6#b122cf60f4d15638835cc8ac992b17db:dce81ee80a5d9f018265544ad533086c0dd89678#bc8c258e5dd01b78f116669316ccc415 - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: enable_threading=False fPIC=True shared=False
+    minizip/1.3.1#0fe428c3789670e2a03b3ad2a941d4b7:2e1098d9acf0d148d3accdacd62d132dc10496a1 - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: bzip2=False fPIC=True shared=False tools=False
+        requires: zlib/1.3.Z
+    ogg/1.3.5#e8186fe05ebe9f8e706fa4bde2164d12:4f2f0b32892774c57b925707b1efe867af6007fd#d88581232ba211bbcb2a69304154fbe3 - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+    openal/1.24.1@thedarkmod#167f4b4068b143a42894d24d2e3b3f5c:03657b8bfe589d48338ec8b10d086660f2510f8a#a664d648d057788ece8042b1174a80ae - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.libcxx=libc++ compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+    opengl/system#cfcf523b9d2bad75cbf377f56562634c:da39a3ee5e6b4b0d3255bfef95601890afd80709#0ba8627bd47edc3a501e8f0eb9a79e5e - Cache
+    pugixml/1.15#3c90254c9582f5f49d84bbf7f3e55e71:9665aec9d6227041f29953a9a16e82af789af736#1808758ba44f52062d19f6557c21fb0b - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.cppstd=gnu17 compiler.libcxx=libc++ compiler.version=18 build_type=Release
+        options: fPIC=True header_only=False no_exceptions=False shared=False wchar_mode=False
+    tinyformat/2.3.0@thedarkmod#ce69108b443bc1e28580e854371cccba:da39a3ee5e6b4b0d3255bfef95601890afd80709#173f4ae3239d86276c40bdde0c65ff6a - Cache
+    tracy/0.13.1@thedarkmod#71aeed268e824a5bffea8ff98eb8ce18:da39a3ee5e6b4b0d3255bfef95601890afd80709#54eb9c29dd076fbcbea1cf787c02ff81 - Cache
+    vorbis/1.3.7#a019e93187ade6ee8a51762f88092604:f2b6da49bf8fa54090bd548593b48a29509125be - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+        requires: ogg/1.3.Z
+    zlib/1.3.1#cac0f6daea041b0ccf42934163defb20:4f2f0b32892774c57b925707b1efe867af6007fd#7533eafac910f62db01510284ee9415d - Cache
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+Build requirements
+    autoconf/2.71#51077f068e61700d65bb05541ea1e4b0:605957f71b8b43df71edcca51d7f1df809eead7d#f3b39c47fd565a06f0c1f9fdd4f6438b - Cache
+        settings: os=FreeBSD
+    automake/1.16.5#b91b7c384c3deaa9d535be02da14d04f:605957f71b8b43df71edcca51d7f1df809eead7d - Build
+        settings: os=FreeBSD
+    gnu-config/cci.20210814#466e9d4d7779e1c142443f7ea44b4284:da39a3ee5e6b4b0d3255bfef95601890afd80709#22618e30bd9e326eb95e824dc90cc860 - Cache
+    libtool/2.4.7#14e7739cc128bc1623d2ed318008e47e:4f2f0b32892774c57b925707b1efe867af6007fd - Build
+        settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+        options: fPIC=True shared=False
+    m4/1.4.19#1727f439cf74e83826ec96d0b4904eee:8ff32efb8d691cb13cf4fbfc650b0bd21932e611#2da7a20c687c931c9c81cfb5a190db3c - Cache
+        settings: os=FreeBSD arch=x86_64 build_type=Release
+    meson/1.10.2#9d2d10681fe7fe61c788c58626c89b25:da39a3ee5e6b4b0d3255bfef95601890afd80709#f54fda458a6ea9fa57bcbb5f76c05bd7 - Cache
+    nasm/2.16.01 - Platform
+    ninja/1.13.2#c8c5dc2a52ed6e4e42a66d75b4717ceb:8ff32efb8d691cb13cf4fbfc650b0bd21932e611#3d388064336b4e03cb004056a253b4f2 - Cache
+        settings: os=FreeBSD arch=x86_64 build_type=Release
+    pkgconf/2.5.1#93c2051284cba1279494a43a4fcfeae2:d3cb6f3bd043ee872fd1348f2c3ee0cef7f218c3 - Build
+        settings: os=FreeBSD arch=x86_64 build_type=Release
+        options: enable_lib=False
+opengl/system: Full command: pkg info libglvnd
+opengl/system: System requirements: libglvnd already installed
+glu/system: Full command: pkg info libGLU
+glu/system: System requirements: libGLU already installed
+
+======== Installing packages ========
+blake2/20190724@thedarkmod: Already installed! (1 of 27)
+doctest/2.4.11: Already installed! (2 of 27)
+gnu-config/cci.20210814: Already installed! (3 of 27)
+libjpeg/9f@thedarkmod: Already installed! (4 of 27)
+m4/1.4.19: Already installed! (5 of 27)
+mbedtls/3.6.6: Already installed! (6 of 27)
+ninja/1.13.2: Already installed! (7 of 27)
+ogg/1.3.5: Already installed! (8 of 27)
+openal/1.24.1@thedarkmod: Already installed! (9 of 27)
+opengl/system: Already installed! (10 of 27)
+opengl/system: Full command: pkg-config --print-provides gl --print-errors
+opengl/system: PkgConfig fill cpp_info for gl
+opengl/system: Full command: pkg-config --libs-only-l gl --print-errors
+opengl/system: Full command: pkg-config --libs-only-L gl --print-errors
+opengl/system: Full command: pkg-config --libs-only-other gl --print-errors
+opengl/system: Full command: pkg-config --cflags-only-other gl --print-errors
+opengl/system: Full command: pkg-config --cflags-only-I gl --print-errors
+pugixml/1.15: Already installed! (11 of 27)
+pugixml/1.15: WARN: Lib folder doesn't exist, can't collect libraries: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/pugix0190deb85f35a/p/lib
+tinyformat/2.3.0@thedarkmod: Already installed! (12 of 27)
+tracy/0.13.1@thedarkmod: Already installed! (13 of 27)
+zlib/1.3.1: Already installed! (14 of 27)
+autoconf/2.71: Already installed! (15 of 27)
+glfw/3.4: Already installed! (16 of 27)
+glu/system: Already installed! (17 of 27)
+glu/system: Full command: pkg-config --print-provides glu --print-errors
+glu/system: PkgConfig fill cpp_info for glu
+glu/system: Full command: pkg-config --libs-only-l glu --print-errors
+glu/system: Full command: pkg-config --libs-only-L glu --print-errors
+glu/system: Full command: pkg-config --libs-only-other glu --print-errors
+glu/system: Full command: pkg-config --cflags-only-other glu --print-errors
+glu/system: Full command: pkg-config --cflags-only-I glu --print-errors
+
+-------- Installing package libpng/1.6.57 (18 of 27) --------
+libpng/1.6.57: Building from source
+libpng/1.6.57: Package libpng/1.6.57:5dd9a38ceb57f0aa5d0680ffd8897b487b01c378
+libpng/1.6.57: settings: os=FreeBSD arch=x86_64 compiler=clang compiler.version=18 build_type=Release
+libpng/1.6.57: options: api_prefix= fPIC=True shared=False sse=True
+libpng/1.6.57: requires: zlib/1.3.Z
+>>> Source step
+libpng/1.6.57: Copying sources to build folder
+libpng/1.6.57: Building your package in /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b
+>>> Generate step
+Generating files for libpng/1.6.57
+Generators folder: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators
+Calling generate() method in recipe
+CMakeToolchain generated: conan_toolchain.cmake
+CMakeToolchain generated: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/CMakePresets.json
+CMakeToolchain generated: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/src/CMakeUserPresets.json
+CMakeDeps necessary find_package() and targets for your CMakeLists.txt
+    find_package(ZLIB)
+    target_link_libraries(... ZLIB::ZLIB)
+Generating aggregated env files
+Generated aggregated env files: ['conanbuild.sh', 'conanrun.sh']
+>>> Build step
+Building libpng/1.6.57
+libpng/1.6.57: Calling build()
+libpng/1.6.57: Running CMake.configure()
+libpng/1.6.57: RUN: cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_INSTALL_PREFIX="/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/p" -DPNG_TESTS="OFF" -DPNG_SHARED="OFF" -DPNG_STATIC="ON" -DPNG_DEBUG="OFF" -DPNG_PREFIX="" -DPNG_FRAMEWORK="OFF" -DPNG_TOOLS="OFF" -DCMAKE_MACOSX_BUNDLE="OFF" -DPNG_INTEL_SSE="on" -DCMAKE_POLICY_DEFAULT_CMP0091="NEW" -DCMAKE_BUILD_TYPE="Release" "/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/src"
+libpng/1.6.57: Full command: . "/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/conanbuild.sh" && cmake -G "Ninja" -DCMAKE_TOOLCHAIN_FILE="generators/conan_toolchain.cmake" -DCMAKE_INSTALL_PREFIX="/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/p" -DPNG_TESTS="OFF" -DPNG_SHARED="OFF" -DPNG_STATIC="ON" -DPNG_DEBUG="OFF" -DPNG_PREFIX="" -DPNG_FRAMEWORK="OFF" -DPNG_TOOLS="OFF" -DCMAKE_MACOSX_BUNDLE="OFF" -DPNG_INTEL_SSE="on" -DCMAKE_POLICY_DEFAULT_CMP0091="NEW" -DCMAKE_BUILD_TYPE="Release" "/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/src"
+-- Using Conan toolchain: /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/conan_toolchain.cmake
+-- Conan toolchain: Setting CMAKE_POSITION_INDEPENDENT_CODE=ON (options.fPIC)
+-- Conan toolchain: Defining architecture flag: -m64
+-- Conan toolchain: Setting BUILD_SHARED_LIBS = OFF
+-- The C compiler identification is Clang 21.1.8
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Building for target architecture: amd64
+-- Conan: Target declared 'ZLIB::ZLIB'
+CMake Error at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/cmakedeps_macros.cmake:81 (message):
+  Library 'z' not found in package.  If 'z' is a system library, declare it
+  with 'cpp_info.system_libs' property
+Call Stack (most recent call first):
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/ZLIB-Target-release.cmake:23 (conan_package_library_targets)
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/ZLIBTargets.cmake:24 (include)
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release/generators/ZLIBConfig.cmake:16 (include)
+  CMakeLists.txt:141 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+
+libpng/1.6.57: ERROR: 
+Package '5dd9a38ceb57f0aa5d0680ffd8897b487b01c378' build failed
+libpng/1.6.57: WARN: Build folder /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/b/libpnc0c399bb52244/b/build/Release
+ERROR: Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/conan/internal/errors.py", line 35, in conanfile_exception_formatter
+    yield
+  File "/usr/local/lib/python3.12/site-packages/conan/internal/methods.py", line 40, in run_build_method
+    conanfile.build()
+  File "/home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.conan2/p/libpnd57e57a5f1493/e/conanfile.py", line 120, in build
+    cmake.configure()
+  File "/usr/local/lib/python3.12/site-packages/conan/tools/cmake/cmake.py", line 136, in configure
+    self._conanfile.run(command, stdout=stdout, stderr=stderr)
+  File "/usr/local/lib/python3.12/site-packages/conan/internal/model/conan_file.py", line 419, in run
+    raise ConanException("Error %d while executing" % retcode)
+conan.errors.ConanException: Error 1 while executing
+
+libpng/1.6.57: Error in build() method, line 120
+	cmake.configure()
+	ConanException: Error 1 while executing
