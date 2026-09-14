@@ -52,9 +52,10 @@ CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCURL_LIBRARY="${LOCALBASE}/lib/libcurl.so" \
 		-DFORCE_COLORED_OUTPUT=ON \
 		-DQT_DEBUG_FIND_PACKAGE=ON \
-		-DCMAKE_FIND_DEBUG_MODE=true
+		-DCMAKE_FIND_DEBUG_MODE=true \
+		-DCMAKE_CXX_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_CXX_FLAGS}" \
+		-DCMAKE_C_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_C_FLAGS}"
 
-#		-DCMAKE_PREFIX_PATH="${LOCALBASE};${LOCALBASE}/share/cppcheck/cfg" \
 ### Make block ##------------------------------------------------------------------------------------------
 #
 ### conflicts ##-------------------------------------------------------------------------------------------
@@ -91,7 +92,8 @@ pre-configure:
 
 post-extract:
 	make -C /usr/ports/devel/tracy extract
-	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}
+	${MKDIR} ${WRKSRC}/external/tracy
+	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
 	make -C /usr/ports/devel/tracy clean
 
 .include <bsd.port.mk>
