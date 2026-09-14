@@ -1,7 +1,7 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
-PORTNAME=		darkmod
-DISTVERSION=	g20260802
-CATEGORIES=		games
+PORTNAME=	darkmod
+DISTVERSION=	g20260906
+CATEGORIES=	games
 MASTER_SITES=	GH
 PKGNAMESUFFIX=	-dev
 DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
@@ -12,57 +12,52 @@ COMMENT=	Near-infinite-world block sandbox game
 WWW=		https://upstream.com
 
 ### License block ##---------------------------------------------------------------------------------------
-LICENSE=		LGPL21+
+LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 # dependencies ##------------------------------------------------------------------------------------------
-BUILD_DEPENDS=	conan:sysutils/conan \
-				nasm:devel/nasm \
-				${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
-				tracy>0:devel/tracy 
-# devel/py-yaml is a dependency of sysutils/conan
+BUILD_DEPENDS=	nasm:devel/nasm \
+		${LOCALBASE}/include/doctest/doctest.h:devel/doctest \
+		${LOCALBASE}/lib/libTracyClient.a:devel/tracy
+
 LIB_DEPENDS=	libzstd.so:archivers/zstd \
-				libminizip-ng.so:archivers/minizip-ng \
-				libz-ng.so:archivers/zlib-ng \
-				libcurl.so:ftp/curl \
-				libvorbisfile.so:audio/libvorbis \
-				libvorbis.so:audio/libvorbis \
-				libogg.so:audio/libogg \
-				libopenal.so:audio/openal-soft \
-				libavcodec.so:multimedia/ffmpeg \
-				libmbedtls.so:security/mbedtls4 \
-				libglfw.so:graphics/glfw
+		libminizip.so:archivers/minizip \
+		libz-ng.so:archivers/zlib-ng \
+		libcurl.so:ftp/curl \
+		libvorbisfile.so:audio/libvorbis \
+		libvorbis.so:audio/libvorbis \
+		libogg.so:audio/libogg \
+		libopenal.so:audio/openal-soft \
+		libavcodec.so:multimedia/ffmpeg \
+		libmbedtls.so:security/mbedtls4 \
+		libglfw.so:graphics/glfw \
+		libpugixml.so:textproc/pugixml
+
 #
 ### uses block ##------------------------------------------------------------------------------------------
 USES=		cmake ninja pkgconfig python shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	stgatilov
 GH_PROJECT=	darkmod_src
-GH_TAGNAME=	6eba8ced56fb3630e0bb6adbbf95727f64f2364d
+GH_TAGNAME=	693d138e0632095b9c1c93081ce049609542c6cb
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 #
-# Directory where Conan will drop the generated CMake configs + libs
-#CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH}
-CONAN_OF=	${WRKSRC}/ThirdParty/artefacts/freebsd_${ARCH:S/amd64/x86_64/}
-CONAN_HOME=	${WRKDIR}/.conan2
-MAKE_ENV+=	CONAN_HOME=${CONAN_HOME}
-#
-CMAKE_ARGS+=    -DCMAKE_ENABLE_TRACY=OFF \
-				-DENABLE_TRACY=OFF \
-				-DFORCE_COLORED_OUTPUT=ON \
-				-DASAN=ON \
-				-DTDM_THIRDPARTY_ARTEFACTS=ON \
-				-DCMAKE_FIND_DEBUG_MODE=true \
-				-DCMAKE_INSTALL_PREFIX="${LOCALBASE}" \
-				--debug-output \
-				-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
-				-DCMAKE_BUILD_TYPE="Release" \
-				-DCMAKE_PREFIX_PATH=${CONAN_OF}
+CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
+		-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
+		-DCMAKE_PREFIX_PATH="${LOCALBASE}" \
+		-DTDM_THIRDPARTY_ARTEFACTS=OFF \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCURL_INCLUDE_DIR="${LOCALBASE}/include" \
+		-DCURL_LIBRARY="${LOCALBASE}/lib/libcurl.so" \
+		-DFORCE_COLORED_OUTPUT=ON \
+		-DTRACY_ENABLE=0 \
+		-DENABLE_TRACY=0 \
+		-DQT_DEBUG_FIND_PACKAGE=ON \
+		-DCMAKE_BUILD_TYPE=DEBUG \
+		-DCMAKE_FIND_DEBUG_MODE=true
 
-#-DCMAKE_PREFIX_PATH=${PREFIX} \
-#				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib \
-#				-DCMAKE_PREFIX_PATH=${LOCALBASE}/lib/cmake \
+#		-DCMAKE_PREFIX_PATH="${LOCALBASE};${LOCALBASE}/share/cppcheck/cfg" \
 ### Make block ##------------------------------------------------------------------------------------------
 #
 ### conflicts ##-------------------------------------------------------------------------------------------
@@ -82,37 +77,24 @@ CMAKE_ARGS+=    -DCMAKE_ENABLE_TRACY=OFF \
 
 #
 #----------------------------------------------------------------------
-pre-configure:	# or post-patch
-	@${ECHO_MSG} "===>  Building third-party dependencies with Conan"
-	${MKDIR} ${CONAN_HOME}
-	# 1. Export the custom recipes that live under ThirdParty/custom/
-	cd ${WRKSRC}/ThirdParty && \
-		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} 1_export_custom.py --unattended
-	# Create the default profile (required by Conan 2)
-	${SETENV} ${MAKE_ENV} conan profile detect --force
-	${ECHO} 'compiler=clang' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'compiler.version=18' >> ${CONAN_HOME}/profiles/default   # adjust to your clang major
-	${ECHO} 'compiler.libcxx=libc++' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'compiler.cppstd=gnu17' >> ${CONAN_HOME}/profiles/default
-	${ECHO} '[platform_tool_requires]' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'nasm/2.16.01' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'mbedtls/3.6.6' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'ninja/1.13.2,4' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'autoconf/2.73' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'm4/1.4.21' >> ${CONAN_HOME}/profiles/default
-	${ECHO} '' >> ${CONAN_HOME}/profiles/default
-	${ECHO} '[replace_requires]' >> ${CONAN_HOME}/profiles/default
-	${ECHO} 'zlib/*: zlib-ng/2.3.3' >> ${CONAN_HOME}/profiles/default
-#	${ECHO} 'minizip/*: minizip-ng/4.2.2' >> ${CONAN_HOME}/profiles/default
-# 2. Install / build the packages for FreeBSD
-	#    (auto-detect profile is usually fine; add -pr / -s if you need more control)
-	cd ${WRKSRC}/ThirdParty && \
-		${SETENV} ${MAKE_ENV} conan install . \
-			-of ${CONAN_OF} \
-			-s thedarkmod/*:build_type=Release \
-			-vvv \
-			-c tools.cmake.cmaketoolchain:generator=Ninja \
-			-b=~nasm -b=~m4 -b=~autoconf -b=~automake -b=~mbedtls -b~ninja -b=~autoconf\
-			-b=missing
+# Prefer zlib-ng and minizip-ng via compatibility symlinks
+pre-configure:
+	@${ECHO_MSG} "===>  Creating CMake config aliases for zlib-ng / minizip-ng"
+	${MKDIR} ${WRKDIR}/cmake-aliases
+# zlib-ng → ZLIB
+	${LN} -sf ${LOCALBASE}/lib/cmake/zlib-ng/zlib-ng-config.cmake \
+	${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${LN} -sf ${LOCALBASE}/lib/cmake/zlib-ng/zlib-ng-config.cmake \
+	${WRKDIR}/cmake-aliases/zlib-config.cmake
+# minizip-ng → minizip
+	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
+	${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
+	${WRKDIR}/cmake-aliases/minizip-config.cmake
+
+post-extract:
+	make -C /usr/ports/devel/tracy extract
+	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}
+	make -C /usr/ports/devel/tracy clean
 
 .include <bsd.port.mk>
