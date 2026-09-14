@@ -94,6 +94,7 @@ post-extract:
 	make -C /usr/ports/devel/tracy extract
 	${MKDIR} ${WRKSRC}/external/tracy
 	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
+	${CP} ${WRKSRC}/external/tracy/*.cpp ${WRKSRC}
 	make -C /usr/ports/devel/tracy clean
 
 .include <bsd.port.mk>
