@@ -61,7 +61,6 @@
 -find_package(MbedTLS REQUIRED CONFIG)
 -find_package(glfw3 REQUIRED CONFIG)
 -find_package(doctest REQUIRED CONFIG)
--find_package(tracy REQUIRED CONFIG)
 +# Most REQUIRED 'CONFIG' removed or replaced with MODULE ###
 +find_package(zlib-ng REQUIRED) 
 +find_package(minizip REQUIRED)
@@ -76,7 +75,7 @@
 +find_package(MbedTLS MODULE)
 +find_package(glfw3 MODULE)
 +find_package(doctest MODULE)
-+find_package(tracy MODULE)
+ find_package(tracy REQUIRED CONFIG)
 +
  
  target_link_libraries(TheDarkMod

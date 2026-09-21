@@ -45,9 +45,9 @@ GH_TAGNAME=	693d138e0632095b9c1c93081ce049609542c6cb
 #
 CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
-		-DCMAKE_PREFIX_PATH="${LOCALBASE}" \
+		-DCMAKE_PREFIX_PATH="${LOCALBASE};${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
 		-DTDM_THIRDPARTY_ARTEFACTS=OFF \
-		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_BUILD_TYPE="Debug" \
 		-DCURL_INCLUDE_DIR="${LOCALBASE}/include" \
 		-DCURL_LIBRARY="${LOCALBASE}/lib/libcurl.so" \
 		-DFORCE_COLORED_OUTPUT=ON \
@@ -55,6 +55,7 @@ CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCMAKE_FIND_DEBUG_MODE=true \
 		-DCMAKE_CXX_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_CXX_FLAGS}" \
 		-DCMAKE_C_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_C_FLAGS}"
+#		-DCMAKE_BUILD_TYPE="Release" \
 
 ### Make block ##------------------------------------------------------------------------------------------
 #
@@ -90,11 +91,11 @@ pre-configure:
 	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
 	${WRKDIR}/cmake-aliases/minizip-config.cmake
 
-post-extract:
-	make -C /usr/ports/devel/tracy extract
-	${MKDIR} ${WRKSRC}/external/tracy
-	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
-	${CP} ${WRKSRC}/external/tracy/*.cpp ${WRKSRC}
-	make -C /usr/ports/devel/tracy clean
+#post-extract:
+#	make -C /usr/ports/devel/tracy extract
+#	${MKDIR} ${WRKSRC}/external/tracy
+#	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
+#	${CP} ${WRKSRC}/external/tracy/*.cpp ${WRKSRC}
+#	make -C /usr/ports/devel/tracy clean
 
 .include <bsd.port.mk>

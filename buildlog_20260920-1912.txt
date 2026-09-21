@@ -1,0 +1,2190 @@
+Script started on Mon Sep 21 00:11:49 2026
+root@Porting:~/GitRepos/PortsTree/games/darkmod-dev # make install
+===>   darkmod-dev-g20260906 depends on executable: nasm - found
+===>   darkmod-dev-g20260906 depends on file: /usr/local/include/doctest/doctest.h - found
+===>   darkmod-dev-g20260906 depends on file: /usr/local/lib/libTracyClient.a - found
+===>   darkmod-dev-g20260906 depends on file: /usr/local/bin/cmake - found
+===>   darkmod-dev-g20260906 depends on executable: ninja - found
+===>   darkmod-dev-g20260906 depends on package: pkgconf>=1.3.0_1 - found
+===>   darkmod-dev-g20260906 depends on file: /usr/local/bin/python3.12 - found
+===>   darkmod-dev-g20260906 depends on file: /usr/local/bin/ccache - found
+===>   darkmod-dev-g20260906 depends on shared library: libzstd.so - found (/usr/local/lib/libzstd.so)
+===>   darkmod-dev-g20260906 depends on shared library: libminizip.so - found (/usr/local/lib/libminizip.so)
+===>   darkmod-dev-g20260906 depends on shared library: libz-ng.so - found (/usr/local/lib/libz-ng.so)
+===>   darkmod-dev-g20260906 depends on shared library: libcurl.so - found (/usr/local/lib/libcurl.so)
+===>   darkmod-dev-g20260906 depends on shared library: libvorbisfile.so - found (/usr/local/lib/libvorbisfile.so)
+===>   darkmod-dev-g20260906 depends on shared library: libvorbis.so - found (/usr/local/lib/libvorbis.so)
+===>   darkmod-dev-g20260906 depends on shared library: libogg.so - found (/usr/local/lib/libogg.so)
+===>   darkmod-dev-g20260906 depends on shared library: libopenal.so - found (/usr/local/lib/libopenal.so)
+===>   darkmod-dev-g20260906 depends on shared library: libavcodec.so - found (/usr/local/lib/libavcodec.so)
+===>   darkmod-dev-g20260906 depends on shared library: libmbedtls.so - found (/usr/local/lib/libmbedtls.so)
+===>   darkmod-dev-g20260906 depends on shared library: libglfw.so - found (/usr/local/lib/libglfw.so)
+===>   darkmod-dev-g20260906 depends on shared library: libpugixml.so - found (/usr/local/lib/libpugixml.so)
+===>  Configuring for darkmod-dev-g20260906
+===>  Creating CMake config aliases for zlib-ng / minizip-ng
+/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/cmake-aliases
+/bin/ln -sf /usr/local/lib/cmake/zlib-ng/zlib-ng-config.cmake  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/cmake-aliases/ZLIBConfig.cmake
+/bin/ln -sf /usr/local/lib/cmake/zlib-ng/zlib-ng-config.cmake  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/cmake-aliases/zlib-config.cmake
+/bin/ln -sf /usr/local/lib/cmake/minizip-ng/minizip-ng-config.cmake  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/cmake-aliases/minizipConfig.cmake
+/bin/ln -sf /usr/local/lib/cmake/minizip-ng/minizip-ng-config.cmake  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/cmake-aliases/minizip-config.cmake
+===>  Performing out-of-source build
+/bin/mkdir -p /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build
+[0mCMake Deprecation Warning at sys/cmake/ucm.cmake:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  CMakeLists.txt:26 (include)
+
+[0m
+[0mDetermining SVN revision[0m
+[0mCMake Debug Log at sys/cmake/SvnVersion.cmake:3 (find_program):
+  find_program called with the following settings:
+
+    VAR: SVNVERSION_PROGRAM
+    NAMES: "svnversion"
+    Documentation: Path to a program.
+    Framework
+      Only Search Frameworks: 0
+      Search Frameworks Last: 0
+      Search Frameworks First: 0
+    AppBundle
+      Only Search AppBundle: 0
+      Search AppBundle Last: 0
+      Search AppBundle First: 0
+    CMAKE_FIND_USE_CMAKE_PATH: 1
+    CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: 1
+    CMAKE_FIND_USE_INSTALL_PREFIX: 1
+
+  find_program considered the following locations:
+
+    /usr/local/bin/svnversion
+    /usr/local/sbin/svnversion
+    /usr/local/svnversion
+    /usr/local/lib/bin/svnversion
+    /usr/local/lib/sbin/svnversion
+    /usr/local/lib/svnversion
+    /usr/local/lib/cmake/Tracy/bin/svnversion
+    /usr/local/lib/cmake/Tracy/sbin/svnversion
+    /usr/local/lib/cmake/Tracy/svnversion
+    /usr/local/libexec/ccache/svnversion
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin/svnversion
+    /sbin/svnversion
+    /bin/svnversion
+    /usr/sbin/svnversion
+    /usr/bin/svnversion
+    /usr/local/sbin/svnversion
+    /usr/local/bin/svnversion
+    /root/bin/svnversion
+    /usr/bin/svnversion
+    /usr/sbin/svnversion
+    /usr/svnversion
+    /bin/svnversion
+    /sbin/svnversion
+    /usr/pkg/bin/svnversion
+    /usr/pkg/sbin/svnversion
+    /usr/pkg/svnversion
+    /opt/bin/svnversion
+    /opt/sbin/svnversion
+    /opt/svnversion
+
+  The item was not found.
+
+Call Stack (most recent call first):
+  CMakeLists.txt:125 (get_svn_revision)
+
+[0m
+[0msvnversion not found[0m
+[0mCMake Debug Log at CMakeLists.txt:270 (find_package):
+  find_package considered the following paths for Findzlib-ng.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findzlib-ng.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/Findzlib-ng.cmake
+    /usr/local/share/cmake/Modules/Findzlib-ng.cmake
+
+  The file was not found.
+
+    /usr/local/lib/cmake/zlib-ng/zlib-ngConfig.cmake
+    /usr/local/lib/cmake/zlib-ng/zlib-ng-config.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findminizip.cmake:3 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:271 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:271 (find_package):
+  find_package considered the following paths for Findminizip.cmake:
+
+    /usr/local/share/cmake/Modules/Findminizip.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findminizip.cmake
+
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindCURL.cmake:83 (find_package):
+  The internally managed CMAKE_FIND_PACKAGE_REDIRECTS_DIR.
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects
+
+  <PackageName>_ROOT CMake variable [CMAKE_FIND_USE_PACKAGE_ROOT_PATH].
+
+    none
+
+  CMAKE_PREFIX_PATH variable [CMAKE_FIND_USE_CMAKE_PATH].
+
+    /usr/local
+    /usr/local/lib
+    /usr/local/lib/cmake/Tracy
+
+  CMAKE_FRAMEWORK_PATH and CMAKE_APPBUNDLE_PATH variables
+  [CMAKE_FIND_USE_CMAKE_PATH].
+
+  Env variable CURL_DIR [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  CMAKE_PREFIX_PATH env variable [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  CMAKE_FRAMEWORK_PATH and CMAKE_APPBUNDLE_PATH env variables
+  [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  Paths specified by the find_package HINTS option.
+
+    none
+
+  Standard system environment variables
+  [CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH].
+
+    /usr/local/libexec/ccache
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin
+    /
+    /usr
+    /root
+
+  CMake User Package Registry [CMAKE_FIND_USE_PACKAGE_REGISTRY].
+
+    none
+
+  CMake variables defined in the Platform file
+  [CMAKE_FIND_USE_CMAKE_SYSTEM_PATH].
+
+    /usr/pkg
+    /opt
+
+  CMake System Package Registry
+  [CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY].
+
+    none
+
+  Paths specified by the find_package PATHS option.
+
+    none
+
+  find_package considered the following locations for CURL's Config module:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects/CURLConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects/curl-config.cmake
+    /usr/local/CURLConfig.cmake
+    /usr/local/curl-config.cmake
+    /usr/local/lib/CURLConfig.cmake
+    /usr/local/lib/curl-config.cmake
+    /usr/local/lib/cmake/CURLConfig.cmake
+    /usr/local/lib/cmake/curl-config.cmake
+    /usr/local/lib/cmake/Tracy/CURLConfig.cmake
+    /usr/local/lib/cmake/Tracy/curl-config.cmake
+    /usr/local/libexec/ccache/CURLConfig.cmake
+    /usr/local/libexec/ccache/curl-config.cmake
+    /CURLConfig.cmake
+    /curl-config.cmake
+    /usr/CURLConfig.cmake
+    /usr/curl-config.cmake
+    /root/CURLConfig.cmake
+    /root/curl-config.cmake
+
+  The file was not found.
+
+Call Stack (most recent call first):
+  CMakeLists.txt:272 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindCURL.cmake:98 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:272 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:272 (find_package):
+  find_package considered the following paths for FindCURL.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindCURL.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindCURL.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindCURL.cmake
+
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:273 (find_package):
+  find_package considered the following paths for FindOpenAL.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindOpenAL.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindOpenAL.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindOpenAL.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindOgg.cmake:4 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:274 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:274 (find_package):
+  find_package considered the following paths for FindOgg.cmake:
+
+    /usr/local/share/cmake/Modules/FindOgg.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindOgg.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindOgg.cmake:4 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindVorbis.cmake:3 (find_package)
+  CMakeLists.txt:275 (find_package)
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindVorbis.cmake:3 (find_package):
+  find_package considered the following paths for FindOgg.cmake:
+
+    /usr/local/share/cmake/Modules/FindOgg.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindOgg.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:275 (find_package)
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindVorbis.cmake:5 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:275 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:275 (find_package):
+  find_package considered the following paths for FindVorbis.cmake:
+
+    /usr/local/share/cmake/Modules/FindVorbis.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindVorbis.cmake
+
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/local/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/local/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/lib/ from PATH_SUFFIXES while adding
+  architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path
+  /usr/local/lib/cmake/Tracy/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path
+  /usr/local/libexec/ccache/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/libexec/ccache/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/local/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/local/sbin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/local/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/local/bin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /root/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /usr/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) added replacement path /lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/pkg/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/pkg/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /opt/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /opt/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library(JPEG_LIBRARY_DEBUG) removed original suffix /usr/lib/X11/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindJPEG.cmake:69 (find_library):
+  find_library called with the following settings:
+
+    VAR: JPEG_LIBRARY_DEBUG
+    NAMES: "jpegd"
+           "jpeg-staticd"
+           "libjpegd"
+           "libjpeg-staticd"
+    Documentation: Path to a library.
+    Framework
+      Only Search Frameworks: 0
+      Search Frameworks Last: 0
+      Search Frameworks First: 0
+    AppBundle
+      Only Search AppBundle: 0
+      Search AppBundle Last: 0
+      Search AppBundle First: 0
+    CMAKE_FIND_USE_CMAKE_PATH: 1
+    CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: 1
+    CMAKE_FIND_USE_INSTALL_PREFIX: 1
+
+  find_library considered the following locations:
+
+    /usr/local/lib/libjpegd(\.so|\.a)
+    /usr/local/lib/libjpeg-staticd(\.so|\.a)
+    /usr/local/lib/liblibjpegd(\.so|\.a)
+    /usr/local/lib/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/libjpegd(\.so|\.a)
+    /usr/local/libjpeg-staticd(\.so|\.a)
+    /usr/local/liblibjpegd(\.so|\.a)
+    /usr/local/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/lib/libjpegd(\.so|\.a)
+    /usr/local/lib/libjpeg-staticd(\.so|\.a)
+    /usr/local/lib/liblibjpegd(\.so|\.a)
+    /usr/local/lib/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libjpegd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libjpeg-staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibjpegd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libjpegd(\.so|\.a)
+    /usr/local/libexec/ccache/libjpeg-staticd(\.so|\.a)
+    /usr/local/libexec/ccache/liblibjpegd(\.so|\.a)
+    /usr/local/libexec/ccache/liblibjpeg-staticd(\.so|\.a)
+    /sbin/libjpegd(\.so|\.a)
+    /sbin/libjpeg-staticd(\.so|\.a)
+    /sbin/liblibjpegd(\.so|\.a)
+    /sbin/liblibjpeg-staticd(\.so|\.a)
+    /bin/libjpegd(\.so|\.a)
+    /bin/libjpeg-staticd(\.so|\.a)
+    /bin/liblibjpegd(\.so|\.a)
+    /bin/liblibjpeg-staticd(\.so|\.a)
+    /usr/sbin/libjpegd(\.so|\.a)
+    /usr/sbin/libjpeg-staticd(\.so|\.a)
+    /usr/sbin/liblibjpegd(\.so|\.a)
+    /usr/sbin/liblibjpeg-staticd(\.so|\.a)
+    /usr/bin/libjpegd(\.so|\.a)
+    /usr/bin/libjpeg-staticd(\.so|\.a)
+    /usr/bin/liblibjpegd(\.so|\.a)
+    /usr/bin/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/sbin/libjpegd(\.so|\.a)
+    /usr/local/sbin/libjpeg-staticd(\.so|\.a)
+    /usr/local/sbin/liblibjpegd(\.so|\.a)
+    /usr/local/sbin/liblibjpeg-staticd(\.so|\.a)
+    /usr/local/bin/libjpegd(\.so|\.a)
+    /usr/local/bin/libjpeg-staticd(\.so|\.a)
+    /usr/local/bin/liblibjpegd(\.so|\.a)
+    /usr/local/bin/liblibjpeg-staticd(\.so|\.a)
+    /usr/lib/libjpegd(\.so|\.a)
+    /usr/lib/libjpeg-staticd(\.so|\.a)
+    /usr/lib/liblibjpegd(\.so|\.a)
+    /usr/lib/liblibjpeg-staticd(\.so|\.a)
+    /usr/libjpegd(\.so|\.a)
+    /usr/libjpeg-staticd(\.so|\.a)
+    /usr/liblibjpegd(\.so|\.a)
+    /usr/liblibjpeg-staticd(\.so|\.a)
+    /lib/libjpegd(\.so|\.a)
+    /lib/libjpeg-staticd(\.so|\.a)
+    /lib/liblibjpegd(\.so|\.a)
+    /lib/liblibjpeg-staticd(\.so|\.a)
+
+  The item was not found.
+
+Call Stack (most recent call first):
+  CMakeLists.txt:276 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:276 (find_package):
+  find_package considered the following paths for FindJPEG.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindJPEG.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindJPEG.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindJPEG.cmake
+
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/lib/lib/ from PATH_SUFFIXES while adding architecture paths
+  for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/lib/lib/ from PATH_SUFFIXES while adding
+  architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/lib/ from PATH_SUFFIXES while adding
+  architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/lib/ from PATH_SUFFIXES while adding
+  architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path
+  /usr/local/lib/cmake/Tracy/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/libexec/ccache/lib/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path
+  /usr/local/libexec/ccache/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/libexec/ccache/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /sbin/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /bin/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/sbin/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/bin/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/sbin/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/sbin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix
+  /usr/local/bin/lib/ from PATH_SUFFIXES while adding architecture paths for
+  suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/local/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/local/bin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /root/bin/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /root/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/lib/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /usr/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /lib/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) added replacement path /lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/pkg/lib/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/pkg/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/pkg/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/pkg/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /opt/lib/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /opt/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /opt/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /opt/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/lib/X11/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /usr/lib/X11/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /zlib/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library(ZLIB_LIBRARY_DEBUG) removed original suffix /zlib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindZLIB.cmake:156 (find_library):
+  find_library called with the following settings:
+
+    VAR: ZLIB_LIBRARY_DEBUG
+    NAMES: "zd"
+           "zlibd"
+           "zdlld"
+           "zlibd1"
+           "zlib1d"
+           "zlibstaticd"
+           "zlibwapid"
+           "zlibvcd"
+           "zlibstatd"
+    Documentation: Path to a library.
+    Framework
+      Only Search Frameworks: 0
+      Search Frameworks Last: 0
+      Search Frameworks First: 0
+    AppBundle
+      Only Search AppBundle: 0
+      Search AppBundle Last: 0
+      Search AppBundle First: 0
+    CMAKE_FIND_USE_CMAKE_PATH: 1
+    CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: 1
+    CMAKE_FIND_USE_INSTALL_PREFIX: 1
+
+  find_library considered the following locations:
+
+    /usr/local/lib/libzd(\.so|\.a)
+    /usr/local/lib/libzlibd(\.so|\.a)
+    /usr/local/lib/libzdlld(\.so|\.a)
+    /usr/local/lib/libzlibd1(\.so|\.a)
+    /usr/local/lib/libzlib1d(\.so|\.a)
+    /usr/local/lib/libzlibstaticd(\.so|\.a)
+    /usr/local/lib/libzlibwapid(\.so|\.a)
+    /usr/local/lib/libzlibvcd(\.so|\.a)
+    /usr/local/lib/libzlibstatd(\.so|\.a)
+    /usr/local/lib/libzd(\.so|\.a)
+    /usr/local/lib/libzlibd(\.so|\.a)
+    /usr/local/lib/libzdlld(\.so|\.a)
+    /usr/local/lib/libzlibd1(\.so|\.a)
+    /usr/local/lib/libzlib1d(\.so|\.a)
+    /usr/local/lib/libzlibstaticd(\.so|\.a)
+    /usr/local/lib/libzlibwapid(\.so|\.a)
+    /usr/local/lib/libzlibvcd(\.so|\.a)
+    /usr/local/lib/libzlibstatd(\.so|\.a)
+    /usr/local/libzd(\.so|\.a)
+    /usr/local/libzlibd(\.so|\.a)
+    /usr/local/libzdlld(\.so|\.a)
+    /usr/local/libzlibd1(\.so|\.a)
+    /usr/local/libzlib1d(\.so|\.a)
+    /usr/local/libzlibstaticd(\.so|\.a)
+    /usr/local/libzlibwapid(\.so|\.a)
+    /usr/local/libzlibvcd(\.so|\.a)
+    /usr/local/libzlibstatd(\.so|\.a)
+    /usr/local/lib/libzd(\.so|\.a)
+    /usr/local/lib/libzlibd(\.so|\.a)
+    /usr/local/lib/libzdlld(\.so|\.a)
+    /usr/local/lib/libzlibd1(\.so|\.a)
+    /usr/local/lib/libzlib1d(\.so|\.a)
+    /usr/local/lib/libzlibstaticd(\.so|\.a)
+    /usr/local/lib/libzlibwapid(\.so|\.a)
+    /usr/local/lib/libzlibvcd(\.so|\.a)
+    /usr/local/lib/libzlibstatd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzdlld(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibd1(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlib1d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibstaticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibwapid(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibvcd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libzlibstatd(\.so|\.a)
+    /usr/local/libexec/ccache/libzd(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibd(\.so|\.a)
+    /usr/local/libexec/ccache/libzdlld(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibd1(\.so|\.a)
+    /usr/local/libexec/ccache/libzlib1d(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibstaticd(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibwapid(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibvcd(\.so|\.a)
+    /usr/local/libexec/ccache/libzlibstatd(\.so|\.a)
+    /sbin/libzd(\.so|\.a)
+    /sbin/libzlibd(\.so|\.a)
+    /sbin/libzdlld(\.so|\.a)
+    /sbin/libzlibd1(\.so|\.a)
+    /sbin/libzlib1d(\.so|\.a)
+    /sbin/libzlibstaticd(\.so|\.a)
+    /sbin/libzlibwapid(\.so|\.a)
+    /sbin/libzlibvcd(\.so|\.a)
+    /sbin/libzlibstatd(\.so|\.a)
+    /bin/libzd(\.so|\.a)
+    /bin/libzlibd(\.so|\.a)
+    /bin/libzdlld(\.so|\.a)
+    /bin/libzlibd1(\.so|\.a)
+    /bin/libzlib1d(\.so|\.a)
+    /bin/libzlibstaticd(\.so|\.a)
+    /bin/libzlibwapid(\.so|\.a)
+    /bin/libzlibvcd(\.so|\.a)
+    /bin/libzlibstatd(\.so|\.a)
+    /usr/sbin/libzd(\.so|\.a)
+    /usr/sbin/libzlibd(\.so|\.a)
+    /usr/sbin/libzdlld(\.so|\.a)
+    /usr/sbin/libzlibd1(\.so|\.a)
+    /usr/sbin/libzlib1d(\.so|\.a)
+    /usr/sbin/libzlibstaticd(\.so|\.a)
+    /usr/sbin/libzlibwapid(\.so|\.a)
+    /usr/sbin/libzlibvcd(\.so|\.a)
+    /usr/sbin/libzlibstatd(\.so|\.a)
+    /usr/bin/libzd(\.so|\.a)
+    /usr/bin/libzlibd(\.so|\.a)
+    /usr/bin/libzdlld(\.so|\.a)
+    /usr/bin/libzlibd1(\.so|\.a)
+    /usr/bin/libzlib1d(\.so|\.a)
+    /usr/bin/libzlibstaticd(\.so|\.a)
+    /usr/bin/libzlibwapid(\.so|\.a)
+    /usr/bin/libzlibvcd(\.so|\.a)
+    /usr/bin/libzlibstatd(\.so|\.a)
+    /usr/local/sbin/libzd(\.so|\.a)
+    /usr/local/sbin/libzlibd(\.so|\.a)
+    /usr/local/sbin/libzdlld(\.so|\.a)
+    /usr/local/sbin/libzlibd1(\.so|\.a)
+    /usr/local/sbin/libzlib1d(\.so|\.a)
+    /usr/local/sbin/libzlibstaticd(\.so|\.a)
+    /usr/local/sbin/libzlibwapid(\.so|\.a)
+    /usr/local/sbin/libzlibvcd(\.so|\.a)
+    /usr/local/sbin/libzlibstatd(\.so|\.a)
+    /usr/local/bin/libzd(\.so|\.a)
+    /usr/local/bin/libzlibd(\.so|\.a)
+    /usr/local/bin/libzdlld(\.so|\.a)
+    /usr/local/bin/libzlibd1(\.so|\.a)
+    /usr/local/bin/libzlib1d(\.so|\.a)
+    /usr/local/bin/libzlibstaticd(\.so|\.a)
+    /usr/local/bin/libzlibwapid(\.so|\.a)
+    /usr/local/bin/libzlibvcd(\.so|\.a)
+    /usr/local/bin/libzlibstatd(\.so|\.a)
+    /usr/lib/libzd(\.so|\.a)
+    /usr/lib/libzlibd(\.so|\.a)
+    /usr/lib/libzdlld(\.so|\.a)
+    /usr/lib/libzlibd1(\.so|\.a)
+    /usr/lib/libzlib1d(\.so|\.a)
+    /usr/lib/libzlibstaticd(\.so|\.a)
+    /usr/lib/libzlibwapid(\.so|\.a)
+    /usr/lib/libzlibvcd(\.so|\.a)
+    /usr/lib/libzlibstatd(\.so|\.a)
+    /usr/lib/libzd(\.so|\.a)
+    /usr/lib/libzlibd(\.so|\.a)
+    /usr/lib/libzdlld(\.so|\.a)
+    /usr/lib/libzlibd1(\.so|\.a)
+    /usr/lib/libzlib1d(\.so|\.a)
+    /usr/lib/libzlibstaticd(\.so|\.a)
+    /usr/lib/libzlibwapid(\.so|\.a)
+    /usr/lib/libzlibvcd(\.so|\.a)
+    /usr/lib/libzlibstatd(\.so|\.a)
+    /usr/libzd(\.so|\.a)
+    /usr/libzlibd(\.so|\.a)
+    /usr/libzdlld(\.so|\.a)
+    /usr/libzlibd1(\.so|\.a)
+    /usr/libzlib1d(\.so|\.a)
+    /usr/libzlibstaticd(\.so|\.a)
+    /usr/libzlibwapid(\.so|\.a)
+    /usr/libzlibvcd(\.so|\.a)
+    /usr/libzlibstatd(\.so|\.a)
+    /lib/libzd(\.so|\.a)
+    /lib/libzlibd(\.so|\.a)
+    /lib/libzdlld(\.so|\.a)
+    /lib/libzlibd1(\.so|\.a)
+    /lib/libzlib1d(\.so|\.a)
+    /lib/libzlibstaticd(\.so|\.a)
+    /lib/libzlibwapid(\.so|\.a)
+    /lib/libzlibvcd(\.so|\.a)
+    /lib/libzlibstatd(\.so|\.a)
+
+  The item was not found.
+
+Call Stack (most recent call first):
+  /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package)
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:68 (find_package):
+  find_package considered the following paths for FindZLIB.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindZLIB.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindZLIB.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindZLIB.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/local/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/lib/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/local/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/lib/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/lib/ from PATH_SUFFIXES while adding
+  architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path
+  /usr/local/lib/cmake/Tracy/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/lib/cmake/Tracy/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path
+  /usr/local/libexec/ccache/ to PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix
+  /usr/local/libexec/ccache/ from PATH_SUFFIXES while adding architecture
+  paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix
+  /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/sbin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/local/sbin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/sbin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/local/bin/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/local/bin/
+  from PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /root/bin/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /usr/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) added replacement path /lib/ to
+  PATH_SUFFIXES for architecture suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/pkg/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/pkg/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /opt/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /opt/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /usr/lib/X11/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library(PNG_LIBRARY_DEBUG) removed original suffix /libpng/lib/ from
+  PATH_SUFFIXES while adding architecture paths for suffix '64'
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at /usr/local/share/cmake/Modules/FindPNG.cmake:103 (find_library):
+  find_library called with the following settings:
+
+    VAR: PNG_LIBRARY_DEBUG
+    NAMES: "png17d"
+           "libpng17d"
+           "libpng17_staticd"
+           "png16d"
+           "libpng16d"
+           "libpng16_staticd"
+           "png15d"
+           "libpng15d"
+           "libpng15_staticd"
+           "png14d"
+           "libpng14d"
+           "libpng14_staticd"
+           "png12d"
+           "libpng12d"
+           "libpng12_staticd"
+    Documentation: Path to a library.
+    Framework
+      Only Search Frameworks: 0
+      Search Frameworks Last: 0
+      Search Frameworks First: 0
+    AppBundle
+      Only Search AppBundle: 0
+      Search AppBundle Last: 0
+      Search AppBundle First: 0
+    CMAKE_FIND_USE_CMAKE_PATH: 1
+    CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: 1
+    CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: 1
+    CMAKE_FIND_USE_INSTALL_PREFIX: 1
+
+  find_library considered the following locations:
+
+    /usr/local/lib/libpng17d(\.so|\.a)
+    /usr/local/lib/liblibpng17d(\.so|\.a)
+    /usr/local/lib/liblibpng17_staticd(\.so|\.a)
+    /usr/local/lib/libpng16d(\.so|\.a)
+    /usr/local/lib/liblibpng16d(\.so|\.a)
+    /usr/local/lib/liblibpng16_staticd(\.so|\.a)
+    /usr/local/lib/libpng15d(\.so|\.a)
+    /usr/local/lib/liblibpng15d(\.so|\.a)
+    /usr/local/lib/liblibpng15_staticd(\.so|\.a)
+    /usr/local/lib/libpng14d(\.so|\.a)
+    /usr/local/lib/liblibpng14d(\.so|\.a)
+    /usr/local/lib/liblibpng14_staticd(\.so|\.a)
+    /usr/local/lib/libpng12d(\.so|\.a)
+    /usr/local/lib/liblibpng12d(\.so|\.a)
+    /usr/local/lib/liblibpng12_staticd(\.so|\.a)
+    /usr/local/libpng17d(\.so|\.a)
+    /usr/local/liblibpng17d(\.so|\.a)
+    /usr/local/liblibpng17_staticd(\.so|\.a)
+    /usr/local/libpng16d(\.so|\.a)
+    /usr/local/liblibpng16d(\.so|\.a)
+    /usr/local/liblibpng16_staticd(\.so|\.a)
+    /usr/local/libpng15d(\.so|\.a)
+    /usr/local/liblibpng15d(\.so|\.a)
+    /usr/local/liblibpng15_staticd(\.so|\.a)
+    /usr/local/libpng14d(\.so|\.a)
+    /usr/local/liblibpng14d(\.so|\.a)
+    /usr/local/liblibpng14_staticd(\.so|\.a)
+    /usr/local/libpng12d(\.so|\.a)
+    /usr/local/liblibpng12d(\.so|\.a)
+    /usr/local/liblibpng12_staticd(\.so|\.a)
+    /usr/local/lib/libpng17d(\.so|\.a)
+    /usr/local/lib/liblibpng17d(\.so|\.a)
+    /usr/local/lib/liblibpng17_staticd(\.so|\.a)
+    /usr/local/lib/libpng16d(\.so|\.a)
+    /usr/local/lib/liblibpng16d(\.so|\.a)
+    /usr/local/lib/liblibpng16_staticd(\.so|\.a)
+    /usr/local/lib/libpng15d(\.so|\.a)
+    /usr/local/lib/liblibpng15d(\.so|\.a)
+    /usr/local/lib/liblibpng15_staticd(\.so|\.a)
+    /usr/local/lib/libpng14d(\.so|\.a)
+    /usr/local/lib/liblibpng14d(\.so|\.a)
+    /usr/local/lib/liblibpng14_staticd(\.so|\.a)
+    /usr/local/lib/libpng12d(\.so|\.a)
+    /usr/local/lib/liblibpng12d(\.so|\.a)
+    /usr/local/lib/liblibpng12_staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libpng17d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng17d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng17_staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libpng16d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng16d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng16_staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libpng15d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng15d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng15_staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libpng14d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng14d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng14_staticd(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/libpng12d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng12d(\.so|\.a)
+    /usr/local/lib/cmake/Tracy/liblibpng12_staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libpng17d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng17d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng17_staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libpng16d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng16d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng16_staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libpng15d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng15d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng15_staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libpng14d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng14d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng14_staticd(\.so|\.a)
+    /usr/local/libexec/ccache/libpng12d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng12d(\.so|\.a)
+    /usr/local/libexec/ccache/liblibpng12_staticd(\.so|\.a)
+    /sbin/libpng17d(\.so|\.a)
+    /sbin/liblibpng17d(\.so|\.a)
+    /sbin/liblibpng17_staticd(\.so|\.a)
+    /sbin/libpng16d(\.so|\.a)
+    /sbin/liblibpng16d(\.so|\.a)
+    /sbin/liblibpng16_staticd(\.so|\.a)
+    /sbin/libpng15d(\.so|\.a)
+    /sbin/liblibpng15d(\.so|\.a)
+    /sbin/liblibpng15_staticd(\.so|\.a)
+    /sbin/libpng14d(\.so|\.a)
+    /sbin/liblibpng14d(\.so|\.a)
+    /sbin/liblibpng14_staticd(\.so|\.a)
+    /sbin/libpng12d(\.so|\.a)
+    /sbin/liblibpng12d(\.so|\.a)
+    /sbin/liblibpng12_staticd(\.so|\.a)
+    /bin/libpng17d(\.so|\.a)
+    /bin/liblibpng17d(\.so|\.a)
+    /bin/liblibpng17_staticd(\.so|\.a)
+    /bin/libpng16d(\.so|\.a)
+    /bin/liblibpng16d(\.so|\.a)
+    /bin/liblibpng16_staticd(\.so|\.a)
+    /bin/libpng15d(\.so|\.a)
+    /bin/liblibpng15d(\.so|\.a)
+    /bin/liblibpng15_staticd(\.so|\.a)
+    /bin/libpng14d(\.so|\.a)
+    /bin/liblibpng14d(\.so|\.a)
+    /bin/liblibpng14_staticd(\.so|\.a)
+    /bin/libpng12d(\.so|\.a)
+    /bin/liblibpng12d(\.so|\.a)
+    /bin/liblibpng12_staticd(\.so|\.a)
+    /usr/sbin/libpng17d(\.so|\.a)
+    /usr/sbin/liblibpng17d(\.so|\.a)
+    /usr/sbin/liblibpng17_staticd(\.so|\.a)
+    /usr/sbin/libpng16d(\.so|\.a)
+    /usr/sbin/liblibpng16d(\.so|\.a)
+    /usr/sbin/liblibpng16_staticd(\.so|\.a)
+    /usr/sbin/libpng15d(\.so|\.a)
+    /usr/sbin/liblibpng15d(\.so|\.a)
+    /usr/sbin/liblibpng15_staticd(\.so|\.a)
+    /usr/sbin/libpng14d(\.so|\.a)
+    /usr/sbin/liblibpng14d(\.so|\.a)
+    /usr/sbin/liblibpng14_staticd(\.so|\.a)
+    /usr/sbin/libpng12d(\.so|\.a)
+    /usr/sbin/liblibpng12d(\.so|\.a)
+    /usr/sbin/liblibpng12_staticd(\.so|\.a)
+    /usr/bin/libpng17d(\.so|\.a)
+    /usr/bin/liblibpng17d(\.so|\.a)
+    /usr/bin/liblibpng17_staticd(\.so|\.a)
+    /usr/bin/libpng16d(\.so|\.a)
+    /usr/bin/liblibpng16d(\.so|\.a)
+    /usr/bin/liblibpng16_staticd(\.so|\.a)
+    /usr/bin/libpng15d(\.so|\.a)
+    /usr/bin/liblibpng15d(\.so|\.a)
+    /usr/bin/liblibpng15_staticd(\.so|\.a)
+    /usr/bin/libpng14d(\.so|\.a)
+    /usr/bin/liblibpng14d(\.so|\.a)
+    /usr/bin/liblibpng14_staticd(\.so|\.a)
+    /usr/bin/libpng12d(\.so|\.a)
+    /usr/bin/liblibpng12d(\.so|\.a)
+    /usr/bin/liblibpng12_staticd(\.so|\.a)
+    /usr/local/sbin/libpng17d(\.so|\.a)
+    /usr/local/sbin/liblibpng17d(\.so|\.a)
+    /usr/local/sbin/liblibpng17_staticd(\.so|\.a)
+    /usr/local/sbin/libpng16d(\.so|\.a)
+    /usr/local/sbin/liblibpng16d(\.so|\.a)
+    /usr/local/sbin/liblibpng16_staticd(\.so|\.a)
+    /usr/local/sbin/libpng15d(\.so|\.a)
+    /usr/local/sbin/liblibpng15d(\.so|\.a)
+    /usr/local/sbin/liblibpng15_staticd(\.so|\.a)
+    /usr/local/sbin/libpng14d(\.so|\.a)
+    /usr/local/sbin/liblibpng14d(\.so|\.a)
+    /usr/local/sbin/liblibpng14_staticd(\.so|\.a)
+    /usr/local/sbin/libpng12d(\.so|\.a)
+    /usr/local/sbin/liblibpng12d(\.so|\.a)
+    /usr/local/sbin/liblibpng12_staticd(\.so|\.a)
+    /usr/local/bin/libpng17d(\.so|\.a)
+    /usr/local/bin/liblibpng17d(\.so|\.a)
+    /usr/local/bin/liblibpng17_staticd(\.so|\.a)
+    /usr/local/bin/libpng16d(\.so|\.a)
+    /usr/local/bin/liblibpng16d(\.so|\.a)
+    /usr/local/bin/liblibpng16_staticd(\.so|\.a)
+    /usr/local/bin/libpng15d(\.so|\.a)
+    /usr/local/bin/liblibpng15d(\.so|\.a)
+    /usr/local/bin/liblibpng15_staticd(\.so|\.a)
+    /usr/local/bin/libpng14d(\.so|\.a)
+    /usr/local/bin/liblibpng14d(\.so|\.a)
+    /usr/local/bin/liblibpng14_staticd(\.so|\.a)
+    /usr/local/bin/libpng12d(\.so|\.a)
+    /usr/local/bin/liblibpng12d(\.so|\.a)
+    /usr/local/bin/liblibpng12_staticd(\.so|\.a)
+    /usr/lib/libpng17d(\.so|\.a)
+    /usr/lib/liblibpng17d(\.so|\.a)
+    /usr/lib/liblibpng17_staticd(\.so|\.a)
+    /usr/lib/libpng16d(\.so|\.a)
+    /usr/lib/liblibpng16d(\.so|\.a)
+    /usr/lib/liblibpng16_staticd(\.so|\.a)
+    /usr/lib/libpng15d(\.so|\.a)
+    /usr/lib/liblibpng15d(\.so|\.a)
+    /usr/lib/liblibpng15_staticd(\.so|\.a)
+    /usr/lib/libpng14d(\.so|\.a)
+    /usr/lib/liblibpng14d(\.so|\.a)
+    /usr/lib/liblibpng14_staticd(\.so|\.a)
+    /usr/lib/libpng12d(\.so|\.a)
+    /usr/lib/liblibpng12d(\.so|\.a)
+    /usr/lib/liblibpng12_staticd(\.so|\.a)
+    /usr/libpng17d(\.so|\.a)
+    /usr/liblibpng17d(\.so|\.a)
+    /usr/liblibpng17_staticd(\.so|\.a)
+    /usr/libpng16d(\.so|\.a)
+    /usr/liblibpng16d(\.so|\.a)
+    /usr/liblibpng16_staticd(\.so|\.a)
+    /usr/libpng15d(\.so|\.a)
+    /usr/liblibpng15d(\.so|\.a)
+    /usr/liblibpng15_staticd(\.so|\.a)
+    /usr/libpng14d(\.so|\.a)
+    /usr/liblibpng14d(\.so|\.a)
+    /usr/liblibpng14_staticd(\.so|\.a)
+    /usr/libpng12d(\.so|\.a)
+    /usr/liblibpng12d(\.so|\.a)
+    /usr/liblibpng12_staticd(\.so|\.a)
+    /lib/libpng17d(\.so|\.a)
+    /lib/liblibpng17d(\.so|\.a)
+    /lib/liblibpng17_staticd(\.so|\.a)
+    /lib/libpng16d(\.so|\.a)
+    /lib/liblibpng16d(\.so|\.a)
+    /lib/liblibpng16_staticd(\.so|\.a)
+    /lib/libpng15d(\.so|\.a)
+    /lib/liblibpng15d(\.so|\.a)
+    /lib/liblibpng15_staticd(\.so|\.a)
+    /lib/libpng14d(\.so|\.a)
+    /lib/liblibpng14d(\.so|\.a)
+    /lib/liblibpng14_staticd(\.so|\.a)
+    /lib/libpng12d(\.so|\.a)
+    /lib/liblibpng12d(\.so|\.a)
+    /lib/liblibpng12_staticd(\.so|\.a)
+
+  The item was not found.
+
+Call Stack (most recent call first):
+  CMakeLists.txt:277 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:277 (find_package):
+  find_package considered the following paths for FindPNG.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPNG.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPNG.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPNG.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findffmpeg.cmake:3 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:278 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:278 (find_package):
+  find_package considered the following paths for Findffmpeg.cmake:
+
+    /usr/local/share/cmake/Modules/Findffmpeg.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findffmpeg.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findpugixml.cmake:3 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:279 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:279 (find_package):
+  find_package considered the following paths for Findpugixml.cmake:
+
+    /usr/local/share/cmake/Modules/Findpugixml.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findpugixml.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindMbedTLS.cmake:4 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:280 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:280 (find_package):
+  find_package considered the following paths for FindMbedTLS.cmake:
+
+    /usr/local/share/cmake/Modules/FindMbedTLS.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindMbedTLS.cmake
+
+
+[0m
+[0mCMake Debug Log at /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findglfw3.cmake:3 (find_package):
+  find_package considered the following paths for FindPkgConfig.cmake:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/FindPkgConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/darkmod_src-693d138e0632095b9c1c93081ce049609542c6cb/sys/cmake/FindPkgConfig.cmake
+
+  The file was found at
+
+    /usr/local/share/cmake/Modules/FindPkgConfig.cmake
+
+Call Stack (most recent call first):
+  CMakeLists.txt:281 (find_package)
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:281 (find_package):
+  find_package considered the following paths for Findglfw3.cmake:
+
+    /usr/local/share/cmake/Modules/Findglfw3.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Findglfw3.cmake
+
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:282 (find_package):
+  find_package considered the following paths for Finddoctest.cmake:
+
+    /usr/local/share/cmake/Modules/Finddoctest.cmake
+
+  The file was found at
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/files/Finddoctest.cmake
+
+
+[0m
+[31mCMake Error at CMakeLists.txt:283 (find_package):
+  Could not find a package configuration file provided by "tracy" with any of
+  the following names:
+
+    tracyConfig.cmake
+    tracy-config.cmake
+
+  Add the installation prefix of "tracy" to CMAKE_PREFIX_PATH or set
+  "tracy_DIR" to a directory containing one of the above files.  If "tracy"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+[0m
+[0mCMake Debug Log at CMakeLists.txt:283 (find_package):
+  The internally managed CMAKE_FIND_PACKAGE_REDIRECTS_DIR.
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects
+
+  <PackageName>_ROOT CMake variable [CMAKE_FIND_USE_PACKAGE_ROOT_PATH].
+
+    none
+
+  CMAKE_PREFIX_PATH variable [CMAKE_FIND_USE_CMAKE_PATH].
+
+    /usr/local
+    /usr/local/lib
+    /usr/local/lib/cmake/Tracy
+
+  CMAKE_FRAMEWORK_PATH and CMAKE_APPBUNDLE_PATH variables
+  [CMAKE_FIND_USE_CMAKE_PATH].
+
+  Env variable tracy_DIR [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  CMAKE_PREFIX_PATH env variable [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  CMAKE_FRAMEWORK_PATH and CMAKE_APPBUNDLE_PATH env variables
+  [CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH].
+
+    none
+
+  Paths specified by the find_package HINTS option.
+
+    none
+
+  Standard system environment variables
+  [CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH].
+
+    /usr/local/libexec/ccache
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.bin
+    /
+    /usr
+    /root
+
+  CMake User Package Registry [CMAKE_FIND_USE_PACKAGE_REGISTRY].
+
+    none
+
+  CMake variables defined in the Platform file
+  [CMAKE_FIND_USE_CMAKE_SYSTEM_PATH].
+
+    /usr/pkg
+    /opt
+
+  CMake System Package Registry
+  [CMAKE_FIND_PACKAGE_NO_SYSTEM_PACKAGE_REGISTRY].
+
+    none
+
+  Paths specified by the find_package PATHS option.
+
+    none
+
+  find_package considered the following locations for tracy's Config module:
+
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects/tracyConfig.cmake
+    /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev/work/.build/CMakeFiles/pkgRedirects/tracy-config.cmake
+    /usr/local/tracyConfig.cmake
+    /usr/local/tracy-config.cmake
+    /usr/local/lib/cmake/Tracy/tracyConfig.cmake
+    /usr/local/lib/cmake/Tracy/tracy-config.cmake
+    /usr/local/lib/tracyConfig.cmake
+    /usr/local/lib/tracy-config.cmake
+    /usr/local/lib/cmake/tracyConfig.cmake
+    /usr/local/lib/cmake/tracy-config.cmake
+    /usr/local/lib/cmake/Tracy/tracyConfig.cmake
+    /usr/local/lib/cmake/Tracy/tracy-config.cmake
+    /usr/local/libexec/ccache/tracyConfig.cmake
+    /usr/local/libexec/ccache/tracy-config.cmake
+    /tracyConfig.cmake
+    /tracy-config.cmake
+    /usr/tracyConfig.cmake
+    /usr/tracy-config.cmake
+    /root/tracyConfig.cmake
+    /root/tracy-config.cmake
+
+  The file was not found.
+
+
+[0m
+-- Configuring incomplete, errors occurred!
+*** Error code 1
+
+Stop.
+make: stopped making "install" in /home/tigersharke/GitRepos/PortsTree/games/darkmod-dev
+root@Porting:~/GitRepos/PortsTree/games/darkmod-dev # ^D
+
+Script done on Mon Sep 21 00:12:02 2026
