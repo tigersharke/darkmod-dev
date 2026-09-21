@@ -11,44 +11,47 @@ find_package(Tracy CONFIG QUIET)
 if(Tracy_FOUND)
     if(TARGET Tracy::TracyClient AND NOT TARGET tracy::tracy)
         add_library(tracy::tracy ALIAS Tracy::TracyClient)
+    elseif(TARGET tracy::Tracy AND NOT TARGET tracy::tracy)
+        add_library(tracy::tracy ALIAS tracy::Tracy)
     elseif(TARGET Tracy::Tracy AND NOT TARGET tracy::tracy)
         add_library(tracy::tracy ALIAS Tracy::Tracy)
+    elseif(TARGET Tracy::tracy AND NOT TARGET tracy::tracy)
+        add_library(tracy::tracy ALIAS Tracy::tracy)
     endif()
     set(tracy_FOUND TRUE)
-else()
-    # Manual fallback
-    find_path(TRACY_INCLUDE_DIR
-        NAMES tracy/Tracy.hpp Tracy.hpp
-        PATHS
-            ${LOCALBASE}/include
-            ${LOCALBASE}/include/tracy
-        PATH_SUFFIXES tracy
-    )
+    return()
+endif()
 
-    find_library(TRACY_LIBRARY
-        NAMES TracyClient tracy
-        PATHS ${LOCALBASE}/lib
-    )
+# Manual fallback if the Config package is missing
+find_path(TRACY_INCLUDE_DIR
+    NAMES tracy/Tracy.hpp Tracy.hpp
+    PATHS
+        ${LOCALBASE}/include
+        ${LOCALBASE}/include/tracy
+)
 
-    include(FindPackageHandleStandardArgs)
-    find_package_handle_standard_args(tracy
-        REQUIRED_VARS TRACY_INCLUDE_DIR
-        # library is nice-to-have; TDM can embed the client
-    )
+find_library(TRACY_LIBRARY
+    NAMES TracyClient tracy
+    PATHS ${LOCALBASE}/lib
+)
 
-    if(tracy_FOUND AND NOT TARGET tracy::tracy)
-        if(TRACY_LIBRARY)
-            add_library(tracy::tracy UNKNOWN IMPORTED)
-            set_target_properties(tracy::tracy PROPERTIES
-                IMPORTED_LOCATION "${TRACY_LIBRARY}"
-                INTERFACE_INCLUDE_DIRECTORIES "${TRACY_INCLUDE_DIR}"
-            )
-        else()
-            add_library(tracy::tracy INTERFACE IMPORTED)
-            set_target_properties(tracy::tracy PROPERTIES
-                INTERFACE_INCLUDE_DIRECTORIES "${TRACY_INCLUDE_DIR}"
-            )
-        endif()
+include(FindPackageHandleStandardArgs)
+find_package_handle_standard_args(tracy
+    REQUIRED_VARS TRACY_INCLUDE_DIR
+)
+
+if(tracy_FOUND AND NOT TARGET tracy::tracy)
+    if(TRACY_LIBRARY)
+        add_library(tracy::tracy UNKNOWN IMPORTED)
+        set_target_properties(tracy::tracy PROPERTIES
+            IMPORTED_LOCATION "${TRACY_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${TRACY_INCLUDE_DIR}"
+        )
+    else()
+        add_library(tracy::tracy INTERFACE IMPORTED)
+        set_target_properties(tracy::tracy PROPERTIES
+            INTERFACE_INCLUDE_DIRECTORIES "${TRACY_INCLUDE_DIR}"
+        )
     endif()
 endif()
 

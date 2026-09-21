@@ -91,11 +91,15 @@ pre-configure:
 	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
 	${WRKDIR}/cmake-aliases/minizip-config.cmake
 
-#post-extract:
-#	make -C /usr/ports/devel/tracy extract
-#	${MKDIR} ${WRKSRC}/external/tracy
-#	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
-#	${CP} ${WRKSRC}/external/tracy/*.cpp ${WRKSRC}
-#	make -C /usr/ports/devel/tracy clean
+post-extract:
+	make -C /usr/ports/devel/tracy extract
+	${MKDIR} ${WRKSRC}/external/tracy
+	${CP} -R `make -C /usr/ports/devel/tracy -V WRKSRC`/public/* ${WRKSRC}/external/tracy
+	# Place the amalgamation where #include <TracyClient.cpp> finds it
+	${CP} ${WRKSRC}/external/tracy/TracyClient.cpp ${WRKSRC}/
+	# Satisfy the relative #include "common/..." and "client/..." inside it
+	${LN} -sfn external/tracy/common ${WRKSRC}/common
+	${LN} -sfn external/tracy/client ${WRKSRC}/client
+	make -C /usr/ports/devel/tracy clean
 
 .include <bsd.port.mk>

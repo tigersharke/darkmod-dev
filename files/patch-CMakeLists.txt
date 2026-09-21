@@ -44,7 +44,7 @@
  
  if (UNIX)
  	if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-@@ -267,20 +266,22 @@ include_directories(
+@@ -267,21 +266,23 @@ include_directories(
  		"${PROJECT_SOURCE_DIR}/idlib"
  )
  
@@ -61,6 +61,7 @@
 -find_package(MbedTLS REQUIRED CONFIG)
 -find_package(glfw3 REQUIRED CONFIG)
 -find_package(doctest REQUIRED CONFIG)
+-find_package(tracy REQUIRED CONFIG)
 +# Most REQUIRED 'CONFIG' removed or replaced with MODULE ###
 +find_package(zlib-ng REQUIRED) 
 +find_package(minizip REQUIRED)
@@ -75,8 +76,18 @@
 +find_package(MbedTLS MODULE)
 +find_package(glfw3 MODULE)
 +find_package(doctest MODULE)
- find_package(tracy REQUIRED CONFIG)
-+
++find_package(Tracy REQUIRED CONFIG)
  
++
  target_link_libraries(TheDarkMod
  		ZLIB::ZLIB
+ 		minizip::minizip
+@@ -295,7 +296,7 @@ target_link_libraries(TheDarkMod
+ 		glfw
+ 		pugixml::pugixml
+ 		doctest::doctest
+-		tracy::tracy
++		Tracy::TracyClient
+ )
+ 
+ if (WIN32)
