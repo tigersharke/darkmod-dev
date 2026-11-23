@@ -108,33 +108,10 @@ post-extract:
 	make -C /usr/ports/devel/tracy clean
 
 post-patch:
-	@${ECHO_MSG} "===>  Renaming idMath::INFINITY → idMath::INF"
-	@${REINPLACE_CMD} \
-		-e '/#ifdef INFINITY/,/#endif/d' \
-		-e '/#  define INFINITY/d' \
-		-e '/#define INFINITY/d' \
-		${WRKSRC}/idlib/math/Math.h
-	@${REINPLACE_CMD} \
-		-e 's/static const float[[:space:]]*INFINITY/static const float			INF/' \
-		${WRKSRC}/idlib/math/Math.h
-	@${REINPLACE_CMD} \
-		-e 's/idMath::INFINITY/idMath::INF/g' \
-		${WRKSRC}/idlib/math/Math.cpp
-	${FIND} ${WRKSRC} \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
-		-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
-		-e 's/idMath::INFINITY/idMath::INF/g'
-
 	@${ECHO_MSG} "===>  Tracy RecreateQueries workaround (Tracy 0.13+)"
 	@${REINPLACE_CMD} \
 		-e 's/tracy::GetGpuCtx().ptr->RecreateQueries();/\/\* RecreateQueries removed in Tracy 0.13+ \*\//' \
 		${WRKSRC}/framework/Tracing.cpp
-
-	# 2. Bulk rename (guarded)
-	${FIND} ${WRKSRC} -type f \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
-		! -path '*/idlib/sys/sys_defines.h' \
-		-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
-		-e 's/\([^I_]\)ALIGN( *\([^,)]*\), *\([^)]*\))/\1ID_ALIGN(\2, \3)/g' \
-		-e 's/^ALIGN( *\([^,)]*\), *\([^)]*\))/ID_ALIGN(\1, \2)/g'
 
 	@${ECHO_MSG} "===>  Link libvorbisfile (missing from upstream CMake)"
 	@${REINPLACE_CMD} \
