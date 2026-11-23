@@ -128,6 +128,9 @@ post-patch:
 		-e 's|-lXext|-lXext|g' \
 		-e 's|-lXxf86vm|-lXxf86vm|g' \
 		${WRKSRC}/CMakeLists.txt
+	${FIND} ${WRKSRC} -type f \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
+	-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
+	-e 's/idMath::INFINITY/idMath::INF/g'
 
 
 
