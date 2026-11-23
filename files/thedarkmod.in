@@ -1,0 +1,3 @@
+#!/bin/sh
+# FreeBSD ports launcher for The Dark Mod
+exec "%%DATADIR%%/thedarkmod" "$@"

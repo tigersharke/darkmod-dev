@@ -1,0 +1,35 @@
+--- CMakeLists.txt.orig	2026-11-23 06:33:26 UTC
++++ CMakeLists.txt
+@@ -256,19 +256,19 @@ include_directories(
+ 		"${PROJECT_SOURCE_DIR}/idlib"
+ )
+ 
+-find_package(ZLIB REQUIRED CONFIG)
+-find_package(minizip REQUIRED CONFIG)
+-find_package(CURL REQUIRED CONFIG)
+-find_package(OpenAL REQUIRED CONFIG)
+-find_package(Ogg REQUIRED CONFIG)
+-find_package(Vorbis REQUIRED CONFIG)
+-find_package(JPEG REQUIRED CONFIG)
+-find_package(PNG REQUIRED CONFIG)
+-find_package(ffmpeg REQUIRED CONFIG)
+-find_package(pugixml REQUIRED CONFIG)
+-find_package(MbedTLS REQUIRED CONFIG)
+-find_package(glfw3 REQUIRED CONFIG)
+-find_package(doctest REQUIRED CONFIG)
++find_package(ZLIB REQUIRED)
++find_package(minizip REQUIRED)
++find_package(CURL REQUIRED)
++find_package(OpenAL REQUIRED)
++find_package(Ogg REQUIRED)
++find_package(Vorbis MODULE)
++find_package(JPEG MODULE)
++find_package(PNG MODULE)
++find_package(ffmpeg MODULE)
++find_package(pugixml MODULE)
++find_package(MbedTLS MODULE)
++find_package(glfw3 MODULE)
++find_package(doctest MODULE)
+ find_package(tracy REQUIRED CONFIG)
+ 
+ target_link_libraries(TheDarkMod

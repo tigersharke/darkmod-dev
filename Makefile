@@ -9,8 +9,8 @@ DIST_SUBDIR=	${PORTNAME}
 
 # Maintainer block ##--------------------------------------------------------------------------------------
 MAINTAINER=	nope@nothere
-COMMENT=	Near-infinite-world block sandbox game
-WWW=		https://upstream.com
+COMMENT=	Stealth game inspired by the Thief series (engine)
+WWW=		https://www.thedarkmod.com/
 
 ### License block ##---------------------------------------------------------------------------------------
 LICENSE=	LGPL21+
@@ -55,7 +55,8 @@ USE_GL=		gl
 CMAKE_ARGS+=	\
 		-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
-		-DCMAKE_PREFIX_PATH="${WRKDIR}/cmake-aliases;${LOCALBASE};${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
+		-DCMAKE_PREFIX_PATH="${WRKDIR}/cmake-aliases;${LOCALBASE}; \
+		${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
 		-DTDM_THIRDPARTY_ARTEFACTS=OFF \
 		-DCMAKE_BUILD_TYPE="Debug" \
 		-DCURL_INCLUDE_DIR="${LOCALBASE}/include" \
@@ -98,26 +99,26 @@ pre-configure:
 	@${ECHO_MSG} "===>  Creating CMake config wrappers for zlib-ng / minizip-ng"
 	${MKDIR} ${WRKDIR}/cmake-aliases
 
-	# Hand-written ZLIB config that points at the real zlib-ng installation
-	${ECHO} 'set(ZLIB_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set(ZLIB_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set(ZLIB_INCLUDE_DIRS "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set(ZLIB_LIBRARY "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set(ZLIB_LIBRARIES "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set(ZLIB_VERSION "2.0")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'add_library(ZLIB::ZLIB SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} 'set_target_properties(ZLIB::ZLIB PROPERTIES' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libz-ng.so"' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-
-	# Same idea for minizip if needed (adjust library name if your port uses minizip-ng)
-	${ECHO} 'set(minizip_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} 'set(minizip_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} 'set(minizip_LIBRARY "${LOCALBASE}/lib/libminizip.so")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} 'add_library(minizip::minizip SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} 'set_target_properties(minizip::minizip PROPERTIES' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libminizip.so"' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	# Hand-written ZLIB config that points at the real zlib-ng installation
+#	${ECHO} 'set(ZLIB_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set(ZLIB_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set(ZLIB_INCLUDE_DIRS "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set(ZLIB_LIBRARY "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set(ZLIB_LIBRARIES "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set(ZLIB_VERSION "2.0")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'add_library(ZLIB::ZLIB SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} 'set_target_properties(ZLIB::ZLIB PROPERTIES' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libz-ng.so"' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+#
+#	# Same idea for minizip if needed (adjust library name if your port uses minizip-ng)
+#	${ECHO} 'set(minizip_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} 'set(minizip_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} 'set(minizip_LIBRARY "${LOCALBASE}/lib/libminizip.so")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} 'add_library(minizip::minizip SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} 'set_target_properties(minizip::minizip PROPERTIES' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libminizip.so"' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+#	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
 
 post-extract:
 	make -C /usr/ports/devel/tracy extract
