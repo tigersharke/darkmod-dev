@@ -1,6 +1,6 @@
---- CMakeLists.txt.orig	2026-11-23 06:33:26 UTC
+--- CMakeLists.txt.orig	2026-03-21 18:55:57 UTC
 +++ CMakeLists.txt
-@@ -256,19 +256,19 @@ include_directories(
+@@ -256,20 +256,20 @@ include_directories(
  		"${PROJECT_SOURCE_DIR}/idlib"
  )
  
@@ -17,6 +17,7 @@
 -find_package(MbedTLS REQUIRED CONFIG)
 -find_package(glfw3 REQUIRED CONFIG)
 -find_package(doctest REQUIRED CONFIG)
+-find_package(tracy REQUIRED CONFIG)
 +find_package(ZLIB REQUIRED)
 +find_package(minizip REQUIRED)
 +find_package(CURL REQUIRED)
@@ -30,6 +31,32 @@
 +find_package(MbedTLS MODULE)
 +find_package(glfw3 MODULE)
 +find_package(doctest MODULE)
- find_package(tracy REQUIRED CONFIG)
++find_package(Tracy REQUIRED CONFIG)
  
  target_link_libraries(TheDarkMod
+ 		ZLIB::ZLIB
+@@ -277,6 +277,7 @@ target_link_libraries(TheDarkMod
+ 		CURL::libcurl
+ 		OpenAL::OpenAL
+ 		vorbis::vorbis
++		vorbis::vorbisfile
+ 		Ogg::ogg
+ 		JPEG::JPEG
+ 		PNG::PNG
+@@ -284,14 +285,14 @@ target_link_libraries(TheDarkMod
+ 		glfw
+ 		pugixml::pugixml
+ 		doctest::doctest
+-		tracy::tracy
++		Tracy::TracyClient
+ )
+ 
+ if (WIN32)
+ 	target_link_libraries(TheDarkMod ws2_32 iphlpapi winmm bcrypt dinput8 dbghelp)
+ 	set_target_properties(TheDarkMod PROPERTIES WIN32_EXECUTABLE TRUE)
+ elseif (UNIX)
+-	target_link_libraries(TheDarkMod pthread dl stdc++fs X11 Xext Xxf86vm)
++	target_link_libraries(TheDarkMod pthread dl X11 Xext Xxf86vm)
+ 
+ 	if(ASAN)
+ 		target_link_libraries(TheDarkMod -fsanitize=address)

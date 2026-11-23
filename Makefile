@@ -55,8 +55,7 @@ USE_GL=		gl
 CMAKE_ARGS+=	\
 		-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
-		-DCMAKE_PREFIX_PATH="${WRKDIR}/cmake-aliases;${LOCALBASE}; \
-		${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
+		-DCMAKE_PREFIX_PATH="${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
 		-DTDM_THIRDPARTY_ARTEFACTS=OFF \
 		-DCMAKE_BUILD_TYPE="Debug" \
 		-DCURL_INCLUDE_DIR="${LOCALBASE}/include" \
@@ -95,30 +94,7 @@ SUB_LIST=	DATADIR="${DATADIR}"
 
 #
 #----------------------------------------------------------------------
-pre-configure:
-	@${ECHO_MSG} "===>  Creating CMake config wrappers for zlib-ng / minizip-ng"
-	${MKDIR} ${WRKDIR}/cmake-aliases
-
-#	# Hand-written ZLIB config that points at the real zlib-ng installation
-#	${ECHO} 'set(ZLIB_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set(ZLIB_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set(ZLIB_INCLUDE_DIRS "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set(ZLIB_LIBRARY "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set(ZLIB_LIBRARIES "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set(ZLIB_VERSION "2.0")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'add_library(ZLIB::ZLIB SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} 'set_target_properties(ZLIB::ZLIB PROPERTIES' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libz-ng.so"' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-#	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
 #
-#	# Same idea for minizip if needed (adjust library name if your port uses minizip-ng)
-#	${ECHO} 'set(minizip_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} 'set(minizip_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} 'set(minizip_LIBRARY "${LOCALBASE}/lib/libminizip.so")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} 'add_library(minizip::minizip SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} 'set_target_properties(minizip::minizip PROPERTIES' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libminizip.so"' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
-#	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
 
 post-extract:
 	make -C /usr/ports/devel/tracy extract
@@ -153,14 +129,6 @@ post-patch:
 		-e 's/tracy::GetGpuCtx().ptr->RecreateQueries();/\/\* RecreateQueries removed in Tracy 0.13+ \*\//' \
 		${WRKSRC}/framework/Tracing.cpp
 
-	@${ECHO_MSG} "===>  FreeBSD ALIGN → ID_ALIGN"
-	# 1. Force the three critical definitions
-	@${REINPLACE_CMD} \
-		-e 's|#define \(ID_\)\?ALIGN( x, a ).*|#define ID_ALIGN( x, a ) ( ( ( x ) + ((a)-1) ) - ( ( (x) + (a) - 1 ) % (a) ) )|' \
-		-e 's|#define _alloca16( x ).*|#define _alloca16( x ) ((void *)ID_ALIGN( (uintptr_t)_alloca( ID_ALIGN( x, 16 ) + 16 ), 16 ))|' \
-		-e 's|#define _alloca128( x ).*|#define _alloca128( x ) ((void *)ID_ALIGN( (uintptr_t)_alloca( ID_ALIGN( x, 128 ) + 128 ), 128 ))|' \
-		${WRKSRC}/idlib/sys/sys_defines.h
-
 	# 2. Bulk rename (guarded)
 	${FIND} ${WRKSRC} -type f \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
 		! -path '*/idlib/sys/sys_defines.h' \
@@ -168,7 +136,11 @@ post-patch:
 		-e 's/\([^I_]\)ALIGN( *\([^,)]*\), *\([^)]*\))/\1ID_ALIGN(\2, \3)/g' \
 		-e 's/^ALIGN( *\([^,)]*\), *\([^)]*\))/ID_ALIGN(\1, \2)/g'
 
-	# 3. Explicit fix for the nested-parens case that the bulk regex misses
+	@${ECHO_MSG} "===>  Link libvorbisfile (missing from upstream CMake)"
+	@${REINPLACE_CMD} \
+		-e '/vorbis::vorbis[^f]/s|vorbis::vorbis|vorbis::vorbis\n\t\tvorbis::vorbisfile|' \
+		${WRKSRC}/CMakeLists.txt
+
 	@${REINPLACE_CMD} \
 		-e 's/ALIGN( tri.numVerts \* 2 \* sizeof( shadowCache_t ), 16 )/ID_ALIGN( tri.numVerts * 2 * sizeof( shadowCache_t ), 16 )/' \
 		${WRKSRC}/renderer/frontend/tr_trisurf.cpp
@@ -180,10 +152,7 @@ post-patch:
 		-e 's|-lXxf86vm|-lXxf86vm|g' \
 		${WRKSRC}/CMakeLists.txt
 
-	@${ECHO_MSG} "===>  Link libvorbisfile (missing from upstream CMake)"
-	@@${REINPLACE_CMD} \
-		-e 's|vorbis::vorbis|vorbis::vorbis\n\t\tvorbis::vorbisfile|' \
-		${WRKSRC}/CMakeLists.txt
+
 
 	@${ECHO_MSG} "===>  Stub RoQFileEncode_f (roqvq excluded)"
 	@${REINPLACE_CMD} \
