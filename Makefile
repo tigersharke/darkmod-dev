@@ -1,10 +1,11 @@
 ### PORTNAME block ##--------------------------------------------------------------------------------------
 PORTNAME=	darkmod
-DISTVERSION=	g20260906
-CATEGORIES=	games
-MASTER_SITES=	GH
+DISTVERSION=	2.14
+CATEGORIES=     games
+MASTER_SITES=	https://www.thedarkmod.com/sources/
+DISTNAME=	thedarkmod.${DISTVERSION}.src
 PKGNAMESUFFIX=	-dev
-DIST_SUBDIR=	${PORTNAME}${PKGNAMESUFFIX}
+DIST_SUBDIR=	${PORTNAME}
 
 # Maintainer block ##--------------------------------------------------------------------------------------
 MAINTAINER=	nope@nothere
@@ -31,21 +32,30 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 		libavcodec.so:multimedia/ffmpeg \
 		libmbedtls.so:security/mbedtls4 \
 		libglfw.so:graphics/glfw \
-		libpugixml.so:textproc/pugixml
+		libpugixml.so:textproc/pugixml \
+		libpng16.so:graphics/png
 
+#NO_WRKSUBDIR=	yes
+WRKSRC=		${WRKDIR}
 #
 ### uses block ##------------------------------------------------------------------------------------------
-USES=		cmake ninja pkgconfig python shebangfix
-USE_GITHUB=	yes
-GH_ACCOUNT=	stgatilov
-GH_PROJECT=	darkmod_src
-GH_TAGNAME=	693d138e0632095b9c1c93081ce049609542c6cb
+#USES=		cmake ninja pkgconfig python shebangfix
+USES=		cmake ninja pkgconfig python shebangfix gl localbase:ldflags xorg jpeg 7z
+#USES=		cmake ninja pkgconfig python shebangfix compiler:c++17-lang gl localbase:ldflags xorg
+#USES=		cmake compiler:c++17-lang gl localbase:ldflags pkgconfig xorg
+USE_XORG=	x11 xext xxf86vm
+USE_GL=		gl
+#USE_GITHUB=	yes
+#GH_ACCOUNT=	stgatilov
+#GH_PROJECT=	darkmod_src
+#GH_TAGNAME=	c1ab71003d544dbedcbcfce7d2bfc4af7cf7a650
 
 # USES=cmake related variables ##--------------------------------------------------------------------------
 #
-CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
+CMAKE_ARGS+=	\
+		-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DCURL_INCLUDE_DIRS=${LOCALBASE}/include \
-		-DCMAKE_PREFIX_PATH="${LOCALBASE};${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
+		-DCMAKE_PREFIX_PATH="${WRKDIR}/cmake-aliases;${LOCALBASE};${LOCALBASE}/lib;${LOCALBASE}/lib/cmake/Tracy" \
 		-DTDM_THIRDPARTY_ARTEFACTS=OFF \
 		-DCMAKE_BUILD_TYPE="Debug" \
 		-DCURL_INCLUDE_DIR="${LOCALBASE}/include" \
@@ -54,8 +64,16 @@ CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 		-DQT_DEBUG_FIND_PACKAGE=ON \
 		-DCMAKE_FIND_DEBUG_MODE=true \
 		-DCMAKE_CXX_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_CXX_FLAGS}" \
-		-DCMAKE_C_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_C_FLAGS}"
+		-DCMAKE_C_FLAGS="-isystem ${WRKSRC}/external/tracy ${CMAKE_C_FLAGS}" \
+		-DTRACY_ENABLE=ON \
+		-DENABLE_TRACY=ON \
+		-DCMAKE_CXX_FLAGS="-DTRACY_DELAYED_INIT -DTRACY_MANUAL_LIFETIME ${CMAKE_CXX_FLAGS}" \
+		-DCMAKE_C_FLAGS="-DTRACY_DELAYED_INIT -DTRACY_MANUAL_LIFETIME ${CMAKE_C_FLAGS}" \
+		-DCOPY_EXE=OFF
 #		-DCMAKE_BUILD_TYPE="Release" \
+
+SUB_FILES=	thedarkmod
+SUB_LIST=	DATADIR="${DATADIR}"
 
 ### Make block ##------------------------------------------------------------------------------------------
 #
@@ -76,20 +94,30 @@ CMAKE_ARGS+=	-DCMAKE_MODULE_PATH="${FILESDIR};${CMAKE_MODULE_PATH}" \
 
 #
 #----------------------------------------------------------------------
-# Prefer zlib-ng and minizip-ng via compatibility symlinks
 pre-configure:
-	@${ECHO_MSG} "===>  Creating CMake config aliases for zlib-ng / minizip-ng"
+	@${ECHO_MSG} "===>  Creating CMake config wrappers for zlib-ng / minizip-ng"
 	${MKDIR} ${WRKDIR}/cmake-aliases
-# zlib-ng → ZLIB
-	${LN} -sf ${LOCALBASE}/lib/cmake/zlib-ng/zlib-ng-config.cmake \
-	${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
-	${LN} -sf ${LOCALBASE}/lib/cmake/zlib-ng/zlib-ng-config.cmake \
-	${WRKDIR}/cmake-aliases/zlib-config.cmake
-# minizip-ng → minizip
-	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
-	${WRKDIR}/cmake-aliases/minizipConfig.cmake
-	${LN} -sf ${LOCALBASE}/lib/cmake/minizip-ng/minizip-ng-config.cmake \
-	${WRKDIR}/cmake-aliases/minizip-config.cmake
+
+	# Hand-written ZLIB config that points at the real zlib-ng installation
+	${ECHO} 'set(ZLIB_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set(ZLIB_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set(ZLIB_INCLUDE_DIRS "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set(ZLIB_LIBRARY "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set(ZLIB_LIBRARIES "${LOCALBASE}/lib/libz-ng.so")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set(ZLIB_VERSION "2.0")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'add_library(ZLIB::ZLIB SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} 'set_target_properties(ZLIB::ZLIB PROPERTIES' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libz-ng.so"' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/ZLIBConfig.cmake
+
+	# Same idea for minizip if needed (adjust library name if your port uses minizip-ng)
+	${ECHO} 'set(minizip_FOUND TRUE)' > ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} 'set(minizip_INCLUDE_DIR "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} 'set(minizip_LIBRARY "${LOCALBASE}/lib/libminizip.so")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} 'add_library(minizip::minizip SHARED IMPORTED)' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} 'set_target_properties(minizip::minizip PROPERTIES' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} '  IMPORTED_LOCATION "${LOCALBASE}/lib/libminizip.so"' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
+	${ECHO} '  INTERFACE_INCLUDE_DIRECTORIES "${LOCALBASE}/include")' >> ${WRKDIR}/cmake-aliases/minizipConfig.cmake
 
 post-extract:
 	make -C /usr/ports/devel/tracy extract
@@ -101,5 +129,82 @@ post-extract:
 	${LN} -sfn external/tracy/common ${WRKSRC}/common
 	${LN} -sfn external/tracy/client ${WRKSRC}/client
 	make -C /usr/ports/devel/tracy clean
+
+post-patch:
+	@${ECHO_MSG} "===>  Renaming idMath::INFINITY → idMath::INF"
+	@${REINPLACE_CMD} \
+		-e '/#ifdef INFINITY/,/#endif/d' \
+		-e '/#  define INFINITY/d' \
+		-e '/#define INFINITY/d' \
+		${WRKSRC}/idlib/math/Math.h
+	@${REINPLACE_CMD} \
+		-e 's/static const float[[:space:]]*INFINITY/static const float			INF/' \
+		${WRKSRC}/idlib/math/Math.h
+	@${REINPLACE_CMD} \
+		-e 's/idMath::INFINITY/idMath::INF/g' \
+		${WRKSRC}/idlib/math/Math.cpp
+	${FIND} ${WRKSRC} \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
+		-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
+		-e 's/idMath::INFINITY/idMath::INF/g'
+
+	@${ECHO_MSG} "===>  Tracy RecreateQueries workaround (Tracy 0.13+)"
+	@${REINPLACE_CMD} \
+		-e 's/tracy::GetGpuCtx().ptr->RecreateQueries();/\/\* RecreateQueries removed in Tracy 0.13+ \*\//' \
+		${WRKSRC}/framework/Tracing.cpp
+
+	@${ECHO_MSG} "===>  FreeBSD ALIGN → ID_ALIGN"
+	# 1. Force the three critical definitions
+	@${REINPLACE_CMD} \
+		-e 's|#define \(ID_\)\?ALIGN( x, a ).*|#define ID_ALIGN( x, a ) ( ( ( x ) + ((a)-1) ) - ( ( (x) + (a) - 1 ) % (a) ) )|' \
+		-e 's|#define _alloca16( x ).*|#define _alloca16( x ) ((void *)ID_ALIGN( (uintptr_t)_alloca( ID_ALIGN( x, 16 ) + 16 ), 16 ))|' \
+		-e 's|#define _alloca128( x ).*|#define _alloca128( x ) ((void *)ID_ALIGN( (uintptr_t)_alloca( ID_ALIGN( x, 128 ) + 128 ), 128 ))|' \
+		${WRKSRC}/idlib/sys/sys_defines.h
+
+	# 2. Bulk rename (guarded)
+	${FIND} ${WRKSRC} -type f \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
+		! -path '*/idlib/sys/sys_defines.h' \
+		-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
+		-e 's/\([^I_]\)ALIGN( *\([^,)]*\), *\([^)]*\))/\1ID_ALIGN(\2, \3)/g' \
+		-e 's/^ALIGN( *\([^,)]*\), *\([^)]*\))/ID_ALIGN(\1, \2)/g'
+
+	# 3. Explicit fix for the nested-parens case that the bulk regex misses
+	@${REINPLACE_CMD} \
+		-e 's/ALIGN( tri.numVerts \* 2 \* sizeof( shadowCache_t ), 16 )/ID_ALIGN( tri.numVerts * 2 * sizeof( shadowCache_t ), 16 )/' \
+		${WRKSRC}/renderer/frontend/tr_trisurf.cpp
+	@${ECHO_MSG} "===>  Remove Linux-only stdc++fs (bare name)"
+	@${REINPLACE_CMD} -e 's/[ 	]stdc++fs//g' \
+		-e 's/stdc++fs//g' \
+		-e 's|-lX11|-L${LOCALBASE}/lib -lX11|g' \
+		-e 's|-lXext|-lXext|g' \
+		-e 's|-lXxf86vm|-lXxf86vm|g' \
+		${WRKSRC}/CMakeLists.txt
+
+	@${ECHO_MSG} "===>  Link libvorbisfile (missing from upstream CMake)"
+	@@${REINPLACE_CMD} \
+		-e 's|vorbis::vorbis|vorbis::vorbis\n\t\tvorbis::vorbisfile|' \
+		${WRKSRC}/CMakeLists.txt
+
+	@${ECHO_MSG} "===>  Stub RoQFileEncode_f (roqvq excluded)"
+	@${REINPLACE_CMD} \
+		-e '/RoQFileEncode_f/s/^/\/\* FreeBSD port: RoQ encoder excluded *\/ /' \
+		${WRKSRC}/framework/Common.cpp
+
+	@${ECHO_MSG} "===>  Disable RoQ encoder command (roqvq tools excluded)"
+	@${REINPLACE_CMD} -e 's|cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|// cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|' \
+		${WRKSRC}/framework/Common.cpp
+
+
+# Upstream provides no CMake install() rules
+INSTALL_TARGET=
+
+do-install:
+	${MKDIR} ${STAGEDIR}${DATADIR}
+	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/thedarkmod.x64 \
+		${STAGEDIR}${DATADIR}/thedarkmod
+	cd ${WRKSRC} && ${COPYTREE_SHARE} glprogs ${STAGEDIR}${DATADIR}
+	${MKDIR} ${STAGEDIR}${DATADIR}/fms
+	${CHMOD} 1777 ${STAGEDIR}${DATADIR}/fms
+	${INSTALL_SCRIPT} ${WRKDIR}/thedarkmod \
+		${STAGEDIR}${PREFIX}/bin/thedarkmod
 
 .include <bsd.port.mk>
