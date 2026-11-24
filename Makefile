@@ -136,6 +136,7 @@ post-patch:
 		-e '/RoQFileEncode_f/s/^/\/\* FreeBSD port: RoQ encoder excluded *\/ /' \
 		${WRKSRC}/framework/Common.cpp
 	@${ECHO_MSG} "===>  Disable RoQ encoder command (roqvq tools excluded)"
+
 	@${REINPLACE_CMD} -e 's|cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|// cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|' \
 		${WRKSRC}/framework/Common.cpp
 	@${REINPLACE_CMD} \
@@ -144,12 +145,9 @@ post-patch:
 		-e 's/ALIGN( staticIndexSize, INDEX_CACHE_ALIGN )/ID_ALIGN( staticIndexSize, INDEX_CACHE_ALIGN )/' \
 		-e 's/ALIGN( staticShadowSize, SHADOW_CACHE_ALIGN )/ID_ALIGN( staticShadowSize, SHADOW_CACHE_ALIGN )/' \
 		${WRKSRC}/renderer/VertexCache.cpp
-	@${ECHO_MSG} "===>  Force C++17 (upstream hard-codes c++14)"
-	@${REINPLACE_CMD} -e 's/-std=c++14/-std=c++17/g' \
-		-e 's/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/g' \
-		-e 's/set(CMAKE_CXX_STANDARD 14)/set(CMAKE_CXX_STANDARD 17)/' \
-		${WRKSRC}/CMakeLists.txt
 
+	@${REINPLACE_CMD} -e 's/\([^I_]\)ALIGN(/\1ID_ALIGN(/g' \
+		${WRKSRC}/renderer/backend/GpuBuffer.cpp
 
 # Upstream provides no CMake install() rules
 INSTALL_TARGET=

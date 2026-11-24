@@ -14,11 +14,38 @@
  			-fmessage-length=0
  			-fvisibility=hidden
 -			-std=c++14
-+			-std=c++17
++			$<$<COMPILE_LANGUAGE:CXX>:-std=c++17>
  	)
  	# enable SSE2 if supported (mainly 32-bit x86)
  	check_cxx_compiler_flag(-msse2 MSSE2_SUPPORTED)
-@@ -256,20 +256,20 @@ include_directories(
+@@ -175,6 +175,7 @@ if (UNIX)
+ if (UNIX)
+ 	ucm_add_dirs("sys/linux" "sys/posix" TO TDM_SOURCE_FILES RECURSIVE)
+ 	ucm_remove_directories("idlib/sys/win32" FROM TDM_SOURCE_FILES)
++	ucm_remove_directories("tools/compilers/roqvq" FROM TDM_SOURCE_FILES)
+ 	ucm_remove_files(
+ 			"renderer/backend/qgl/glad_wgl.c"
+ 			"sys/linux/dedicated.cpp"
+@@ -202,6 +203,18 @@ target_sources(TheDarkMod PRIVATE ${TDM_SOURCE_FILES})
+ )
+ 
+ target_sources(TheDarkMod PRIVATE ${TDM_SOURCE_FILES})
++set_source_files_properties(
++	idlib/math/Simd_AVX.cpp
++	PROPERTIES COMPILE_FLAGS "-mavx"
++)
++set_source_files_properties(
++	idlib/math/Simd_AVX2.cpp
++	PROPERTIES COMPILE_FLAGS "-mavx2 -mfma"
++)
++set_source_files_properties(
++	idlib/math/Simd_SSSE3.cpp
++	PROPERTIES COMPILE_FLAGS "-mssse3"
++)
+ 
+ if (MSVC)
+ 	ucm_add_dirs("sys/msvc/natvis" TO TDM_NATVIS_FILES RECURSIVE ADDITIONAL_EXT "natvis")
+@@ -256,20 +269,20 @@ include_directories(
  		"${PROJECT_SOURCE_DIR}/idlib"
  )
  
@@ -53,7 +80,7 @@
  
  target_link_libraries(TheDarkMod
  		ZLIB::ZLIB
-@@ -277,6 +277,7 @@ target_link_libraries(TheDarkMod
+@@ -277,6 +290,7 @@ target_link_libraries(TheDarkMod
  		CURL::libcurl
  		OpenAL::OpenAL
  		vorbis::vorbis
@@ -61,7 +88,7 @@
  		Ogg::ogg
  		JPEG::JPEG
  		PNG::PNG
-@@ -284,14 +285,14 @@ target_link_libraries(TheDarkMod
+@@ -284,14 +298,14 @@ target_link_libraries(TheDarkMod
  		glfw
  		pugixml::pugixml
  		doctest::doctest
