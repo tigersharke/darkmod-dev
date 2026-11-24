@@ -1,5 +1,23 @@
 --- CMakeLists.txt.orig	2026-03-21 18:55:57 UTC
 +++ CMakeLists.txt
+@@ -36,7 +36,7 @@ endif()
+ 	include(ThirdParty/use_artefacts.cmake)
+ endif()
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+@@ -68,7 +68,7 @@ if (UNIX)
+ 			-fno-omit-frame-pointer         # crashdumps!
+ 			-fmessage-length=0
+ 			-fvisibility=hidden
+-			-std=c++14
++			-std=c++17
+ 	)
+ 	# enable SSE2 if supported (mainly 32-bit x86)
+ 	check_cxx_compiler_flag(-msse2 MSSE2_SUPPORTED)
 @@ -256,20 +256,20 @@ include_directories(
  		"${PROJECT_SOURCE_DIR}/idlib"
  )

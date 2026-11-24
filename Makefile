@@ -39,9 +39,7 @@ LIB_DEPENDS=	libzstd.so:archivers/zstd \
 WRKSRC=		${WRKDIR}
 #
 ### uses block ##------------------------------------------------------------------------------------------
-#USES=		cmake ninja pkgconfig python shebangfix
-USES=		cmake ninja pkgconfig python shebangfix gl localbase:ldflags xorg jpeg 7z
-#USES=		cmake ninja pkgconfig python shebangfix compiler:c++17-lang gl localbase:ldflags xorg
+USES=		cmake compiler:c++17-lang ninja pkgconfig python shebangfix gl localbase:ldflags xorg jpeg 7z
 #USES=		cmake compiler:c++17-lang gl localbase:ldflags pkgconfig xorg
 USE_XORG=	x11 xext xxf86vm
 USE_GL=		gl
@@ -69,8 +67,10 @@ CMAKE_ARGS+=	\
 		-DENABLE_TRACY=ON \
 		-DCMAKE_CXX_FLAGS="-DTRACY_DELAYED_INIT -DTRACY_MANUAL_LIFETIME ${CMAKE_CXX_FLAGS}" \
 		-DCMAKE_C_FLAGS="-DTRACY_DELAYED_INIT -DTRACY_MANUAL_LIFETIME ${CMAKE_C_FLAGS}" \
-		-DCOPY_EXE=OFF
-#		-DCMAKE_BUILD_TYPE="Release" \
+		-DCOPY_EXE=OFF \
+		-DCMAKE_CXX_STANDARD=17 \
+		-DCMAKE_CXX_STANDARD_REQUIRED=ON \
+		-DCMAKE_CXX_EXTENSIONS=OFF
 
 SUB_FILES=	thedarkmod
 SUB_LIST=	DATADIR="${DATADIR}"
@@ -131,17 +131,24 @@ post-patch:
 	${FIND} ${WRKSRC} -type f \( -name '*.h' -o -name '*.hpp' -o -name '*.cpp' -o -name '*.c' \) \
 	-print0 | ${XARGS} -0 ${REINPLACE_CMD} \
 	-e 's/idMath::INFINITY/idMath::INF/g'
-
-
-
 	@${ECHO_MSG} "===>  Stub RoQFileEncode_f (roqvq excluded)"
 	@${REINPLACE_CMD} \
 		-e '/RoQFileEncode_f/s/^/\/\* FreeBSD port: RoQ encoder excluded *\/ /' \
 		${WRKSRC}/framework/Common.cpp
-
 	@${ECHO_MSG} "===>  Disable RoQ encoder command (roqvq tools excluded)"
 	@${REINPLACE_CMD} -e 's|cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|// cmdSystem->AddCommand( "roq", RoQFileEncode_f, CMD_FL_TOOL, "encodes a roq file" );|' \
 		${WRKSRC}/framework/Common.cpp
+	@${REINPLACE_CMD} \
+		-e 's/ALIGN( bytes, alignSize )/ID_ALIGN( bytes, alignSize )/' \
+		-e 's/ALIGN( staticVertexSize, VERTEX_CACHE_ALIGN )/ID_ALIGN( staticVertexSize, VERTEX_CACHE_ALIGN )/' \
+		-e 's/ALIGN( staticIndexSize, INDEX_CACHE_ALIGN )/ID_ALIGN( staticIndexSize, INDEX_CACHE_ALIGN )/' \
+		-e 's/ALIGN( staticShadowSize, SHADOW_CACHE_ALIGN )/ID_ALIGN( staticShadowSize, SHADOW_CACHE_ALIGN )/' \
+		${WRKSRC}/renderer/VertexCache.cpp
+	@${ECHO_MSG} "===>  Force C++17 (upstream hard-codes c++14)"
+	@${REINPLACE_CMD} -e 's/-std=c++14/-std=c++17/g' \
+		-e 's/CMAKE_CXX_STANDARD 14/CMAKE_CXX_STANDARD 17/g' \
+		-e 's/set(CMAKE_CXX_STANDARD 14)/set(CMAKE_CXX_STANDARD 17)/' \
+		${WRKSRC}/CMakeLists.txt
 
 
 # Upstream provides no CMake install() rules
