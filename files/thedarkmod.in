@@ -4,21 +4,24 @@
 # The engine is unreliable with fs_basepath/fs_savepath alone: it can load
 # defaults and overwrite Darkmod.cfg on quit.  We instead present a full
 # game tree under ~/.darkmod (symlinks to packaged data + local cfg/saves).
+#
+# Never symlink *.cfg or fms — those must be real, user-writable paths.
 
 DARKMOD_HOME="${HOME}/.darkmod"
 DATADIR="%%DATADIR%%"
 CFG="${DARKMOD_HOME}/Darkmod.cfg"
 
-mkdir -p "${DARKMOD_HOME}"
+mkdir -p "${DARKMOD_HOME}/fms"
 
 # Link packaged data into the user tree so cwd-relative lookups work.
-# Do not clobber existing files (cfg, saves, user missions).
 if [ -d "${DATADIR}" ]; then
 	for item in "${DATADIR}"/*; do
 		[ -e "${item}" ] || continue
 		base=$(basename "${item}")
 		case "${base}" in
 			thedarkmod|thedarkmod.x64) continue ;;
+			fms) continue ;;
+			*.cfg|*.CFG) continue ;;
 		esac
 		if [ ! -e "${DARKMOD_HOME}/${base}" ]; then
 			ln -s "${item}" "${DARKMOD_HOME}/${base}"
@@ -90,7 +93,6 @@ fi
 cd "${DARKMOD_HOME}" || exit 1
 
 if [ "${first_run}" -eq 1 ]; then
-	# First run only: force windowed defaults (after "$@" so the wrapper wins).
 	exec "${DATADIR}/thedarkmod" \
 		"$@" \
 		+set r_fullscreen 0 \
