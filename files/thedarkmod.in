@@ -1,3 +1,11 @@
 #!/bin/sh
-# FreeBSD ports launcher for The Dark Mod
-exec "%%DATADIR%%/thedarkmod" "$@"
+DARKMOD_HOME="${HOME}/.darkmod"
+mkdir -p "${DARKMOD_HOME}"
+# optional: seed missing configs from the system data once
+for f in Darkmod.cfg DarkmodKeybinds.cfg DarkmodPadbinds.cfg; do
+	[ -f "${DARKMOD_HOME}/$f" ] || \
+	[ -f /usr/local/share/darkmod/$f ] && \
+	cp /usr/local/share/darkmod/$f "${DARKMOD_HOME}/"
+done
+cd "${DARKMOD_HOME}"
+exec /usr/local/libexec/thedarkmod.x64 "$@"
