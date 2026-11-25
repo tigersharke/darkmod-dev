@@ -1,11 +1,30 @@
 #!/bin/sh
 # FreeBSD port launcher for The Dark Mod engine
+#
+# The engine is unreliable with fs_basepath/fs_savepath alone: it can load
+# defaults and overwrite Darkmod.cfg on quit.  We instead present a full
+# game tree under ~/.darkmod (symlinks to packaged data + local cfg/saves).
 
 DARKMOD_HOME="${HOME}/.darkmod"
 DATADIR="%%DATADIR%%"
 CFG="${DARKMOD_HOME}/Darkmod.cfg"
 
 mkdir -p "${DARKMOD_HOME}"
+
+# Link packaged data into the user tree so cwd-relative lookups work.
+# Do not clobber existing files (cfg, saves, user missions).
+if [ -d "${DATADIR}" ]; then
+	for item in "${DATADIR}"/*; do
+		[ -e "${item}" ] || continue
+		base=$(basename "${item}")
+		case "${base}" in
+			thedarkmod|thedarkmod.x64) continue ;;
+		esac
+		if [ ! -e "${DARKMOD_HOME}/${base}" ]; then
+			ln -s "${item}" "${DARKMOD_HOME}/${base}"
+		fi
+	done
+fi
 
 first_run=0
 win_w=1280
@@ -68,19 +87,11 @@ seta sensitivityMenu "1.0"
 EOF
 fi
 
-for f in DarkmodKeybinds.cfg DarkmodPadbinds.cfg; do
-	if [ ! -f "${DARKMOD_HOME}/${f}" ] && [ -f "${DATADIR}/${f}" ]; then
-		cp "${DATADIR}/${f}" "${DARKMOD_HOME}/"
-	fi
-done
-
 cd "${DARKMOD_HOME}" || exit 1
 
 if [ "${first_run}" -eq 1 ]; then
-	# First run: wrapper forces windowed defaults (after "$@" so wrapper wins).
+	# First run only: force windowed defaults (after "$@" so the wrapper wins).
 	exec "${DATADIR}/thedarkmod" \
-		+set fs_basepath "${DATADIR}" \
-		+set fs_savepath "${DARKMOD_HOME}" \
 		"$@" \
 		+set r_fullscreen 0 \
 		+set r_mode -1 \
@@ -89,10 +100,5 @@ if [ "${first_run}" -eq 1 ]; then
 		+set sensitivity 30 \
 		+set sensitivityMenu 1.0
 else
-	exec "${DATADIR}/thedarkmod" \
-		+set fs_basepath "${DATADIR}" \
-		+set fs_savepath "${DARKMOD_HOME}" \
-		+set sensitivity 30 \
-		+set sensitivityMenu 1.0 \
-		"$@"
+	exec "${DATADIR}/thedarkmod" "$@"
 fi
