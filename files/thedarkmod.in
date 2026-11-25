@@ -1,14 +1,70 @@
 #!/bin/sh
-# FreeBSD port launcher for The Dark Mod engine
-
 DARKMOD_HOME="${HOME}/.darkmod"
 DATADIR="%%DATADIR%%"
+CFG="${DARKMOD_HOME}/Darkmod.cfg"
 
 mkdir -p "${DARKMOD_HOME}"
 
-# Seed default configs into the user dir only when missing there
-# and present in the system data package.
-for f in Darkmod.cfg DarkmodKeybinds.cfg DarkmodPadbinds.cfg; do
+# --- first-run defaults: windowed, a bit under desktop size ---
+if [ ! -f "$CFG" ]; then
+	width=
+	height=
+
+	# 1) xrandr (X11)
+	if [ -z "$width" ] && command -v xrandr >/dev/null 2>&1; then
+		res=$(xrandr 2>/dev/null | awk '/ connected.*[0-9]+x[0-9]+/ {
+			for (i = 1; i <= NF; i++)
+				if ($i ~ /^[0-9]+x[0-9]+/) { print $i; exit }
+		}')
+		# prefer current mode (*) if present
+		res=$(xrandr 2>/dev/null | awk '/\*/ { print $1; exit }')
+		width=${res%x*}
+		height=${res#*x}
+	fi
+
+	# 2) xdpyinfo (X11)
+	if [ -z "$width" ] && command -v xdpyinfo >/dev/null 2>&1; then
+		res=$(xdpyinfo 2>/dev/null | awk '/dimensions:/ { print $2; exit }')
+		width=${res%x*}
+		height=${res#*x}
+	fi
+
+	# 3) wlr-randr (Wayland)
+	if [ -z "$width" ] && command -v wlr-randr >/dev/null 2>&1; then
+		# current mode line often: "  1920x1080 px, ..."
+		res=$(wlr-randr 2>/dev/null | awk '/^[ \t]*[0-9]+x[0-9]+/ {
+			print $1; exit
+		}')
+		width=${res%x*}
+		height=${res#*x}
+	fi
+
+	# validate or fall back
+	case "$width" in
+		''|*[!0-9]*|0) width=1280; height=800 ;;
+	esac
+	case "$height" in
+		''|*[!0-9]*|0) width=1280; height=800 ;;
+	esac
+
+	win_w=$((width * 80 / 100))
+	win_h=$((height * 80 / 100))
+	[ "$win_w" -lt 1024 ] && win_w=1024
+	[ "$win_h" -lt 720 ]  && win_h=720
+	# optional: never start larger than 1920x1080 on first run
+	[ "$win_w" -gt 1920 ] && win_w=1920
+	[ "$win_h" -gt 1080 ] && win_h=1080
+
+	cat > "$CFG" << EOF
+seta r_fullscreen "0"
+seta r_mode "-1"
+seta r_customWidth "$win_w"
+seta r_customHeight "$win_h"
+EOF
+fi
+
+# optional: seed other cfg files only if missing and present in DATADIR
+for f in DarkmodKeybinds.cfg DarkmodPadbinds.cfg; do
 	if [ ! -f "${DARKMOD_HOME}/${f}" ] && [ -f "${DATADIR}/${f}" ]; then
 		cp "${DATADIR}/${f}" "${DARKMOD_HOME}/"
 	fi
@@ -16,9 +72,18 @@ done
 
 cd "${DARKMOD_HOME}" || exit 1
 
-# Binary lives next to the game data (see do-install in the port Makefile).
-# Prefer fs_basepath/fs_savepath so saves and configs stay writable in $HOME.
-exec "${DATADIR}/thedarkmod" \
-	+set fs_basepath "${DATADIR}" \
-	+set fs_savepath "${DARKMOD_HOME}" \
-	"$@"
+if [ "$first_run" -eq 1 ]; then
+	exec "${DATADIR}/thedarkmod" \
+		+set fs_basepath "${DATADIR}" \
+		+set fs_savepath "${DARKMOD_HOME}" \
+		"$@" \
+		+set r_fullscreen 0 \
+		+set r_mode -1 \
+		+set r_customWidth "$win_w" \
+		+set r_customHeight "$win_h" \
+else
+	exec "${DATADIR}/thedarkmod" \
+		+set fs_basepath "${DATADIR}" \
+		+set fs_savepath "${DARKMOD_HOME}" \
+		"$@"
+fi
