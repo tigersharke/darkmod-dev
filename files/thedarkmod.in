@@ -1,11 +1,24 @@
 #!/bin/sh
+# FreeBSD port launcher for The Dark Mod engine
+
 DARKMOD_HOME="${HOME}/.darkmod"
+DATADIR="%%DATADIR%%"
+
 mkdir -p "${DARKMOD_HOME}"
-# optional: seed missing configs from the system data once
+
+# Seed default configs into the user dir only when missing there
+# and present in the system data package.
 for f in Darkmod.cfg DarkmodKeybinds.cfg DarkmodPadbinds.cfg; do
-	[ -f "${DARKMOD_HOME}/$f" ] || \
-	[ -f /usr/local/share/darkmod/$f ] && \
-	cp /usr/local/share/darkmod/$f "${DARKMOD_HOME}/"
+	if [ ! -f "${DARKMOD_HOME}/${f}" ] && [ -f "${DATADIR}/${f}" ]; then
+		cp "${DATADIR}/${f}" "${DARKMOD_HOME}/"
+	fi
 done
-cd "${DARKMOD_HOME}"
-exec /usr/local/libexec/thedarkmod.x64 "$@"
+
+cd "${DARKMOD_HOME}" || exit 1
+
+# Binary lives next to the game data (see do-install in the port Makefile).
+# Prefer fs_basepath/fs_savepath so saves and configs stay writable in $HOME.
+exec "${DATADIR}/thedarkmod" \
+	+set fs_basepath "${DATADIR}" \
+	+set fs_savepath "${DARKMOD_HOME}" \
+	"$@"
